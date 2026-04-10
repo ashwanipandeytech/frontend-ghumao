@@ -97,5 +97,34 @@ If you face CORS issues after deployment, ensure your server's `.htaccess` in th
 Header set Access-Control-Allow-Origin "*"
 Header set Access-Control-Allow-Methods "GET, POST, OPTIONS, DELETE, PUT"
 Header set Access-Control-Allow-Headers "Content-Type, Authorization"
+
+
+
 ```
+
+
+FTP_REMOTE_PATH_STAGE 
+ /domains/demohandler.in/public_html/ghumao/
+
+
+ FTP_REMOTE_PATH_LIVE 
+      /domains/ghumao.in/public_html/
+
+ Please ensure you have these secrets added to your web-app-console repository:
+
+  ┌───────────────────────┬──────────────────────┐
+  │ Stage Secrets         │ Live Secrets         │
+  ├───────────────────────┼──────────────────────┤
+  │ FTP_SERVER_STAGE      │ FTP_SERVER_LIVE      │
+  │ FTP_USERNAME_STAGE    │ FTP_USERNAME_LIVE    │
+  │ FTP_PASSWORD_STAGE    │ FTP_PASSWORD_LIVE    │
+  │ FTP_REMOTE_PATH_STAGE │ FTP_REMOTE_PATH_LIVE │
+  └───────────────────────┴──────────────────────┘
+
+  Important Note on FTP_REMOTE_PATH: 
+  For Hostinger, ensure these paths end with a slash /. 
+   * Example Stage Path: /domains/farmingmart.in/public_html/
+   * Example Live Path: /domains/safure.demohandler.in/public_html/
+
+  Is there anything else you'd like me to adjust or verify?
 
