@@ -1,0 +1,39 @@
+name: Deploy Live
+
+on:
+  push:
+    branches:
+      - live
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Install Dependencies
+        run: npm install --legacy-peer-deps
+
+      - name: Build Angular App
+        run: npm run build -- --configuration production --base-href https://ghumao.in/
+
+      - name: Deploy to Hostinger Live
+        uses: SamKirkland/FTP-Deploy-Action@4.3.3
+        with:
+          server: ${{ secrets.FTP_SERVER_LIVE }}
+          username: ${{ secrets.FTP_USERNAME_LIVE }}
+          password: ${{ secrets.FTP_PASSWORD_LIVE }}
+          port: 21
+          protocol: ftp
+          local-dir: ./dist/ghumao/
+          server-dir: ${{ secrets.FTP_REMOTE_PATH_LIVE }}
+          delete: true
+          exclude: |
+            **/.htaccess
