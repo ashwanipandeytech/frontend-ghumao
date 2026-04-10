@@ -10,7 +10,7 @@ export class AppComponent {
   title = 'ghumao-web';
   allowaccess:boolean;
   constructor(private router :Router, private renderer: Renderer2) {
-    console.log("Ghumao Version: Stage Deployment Verified - Update Success");
+    console.log("Ghumao Version: Stage Deployment Verified - Update Success at 14:56:08");
 
     router.events.subscribe((event: RouterEvent) => {
 
