@@ -33,6 +33,7 @@ jobs:
           local-dir: ./dist/ghumao/
           server-dir: ${{ secrets.FTP_REMOTE_PATH_STAGE }}
           port: 21
+          protocol: ftp
           delete: true
           exclude: |
             **/.htaccess
