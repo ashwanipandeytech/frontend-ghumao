@@ -22,7 +22,7 @@ jobs:
         run: npm install --legacy-peer-deps
 
       - name: Build Angular App
-        run: npm run build -- --configuration stage --base-href https://ghumao.demohandler.in/
+        run: npm run build -- --configuration stage
 
       - name: Deploy to Hostinger Stage
         uses: SamKirkland/FTP-Deploy-Action@4.3.3
@@ -32,8 +32,4 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD_STAGE }}
           local-dir: ./dist/ghumao/
           server-dir: ${{ secrets.FTP_REMOTE_PATH_STAGE }}
-          port: 21
-          protocol: ftp
           delete: true
-          exclude: |
-            **/.htaccess
