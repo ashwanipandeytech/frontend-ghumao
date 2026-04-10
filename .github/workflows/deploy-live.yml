@@ -38,4 +38,4 @@ jobs:
           exclude: |
             **/.htaccess
             api/
-            images/package/
+            package/
