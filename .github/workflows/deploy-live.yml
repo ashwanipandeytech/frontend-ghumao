@@ -34,7 +34,7 @@ jobs:
           protocol: ftp
           local-dir: ./dist/ghumao/
           server-dir: ${{ secrets.FTP_REMOTE_PATH_LIVE }}
-          delete: true
+          dangerous-clean-slate: true
           exclude: |
             **/.htaccess
             api/
