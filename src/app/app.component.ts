@@ -10,7 +10,7 @@ export class AppComponent {
   title = 'ghumao-web';
   allowaccess:boolean;
   constructor(private router :Router, private renderer: Renderer2) {
-    console.log("Ghumao Version: Live CI/CD Process - Success at 15:47:58");
+    console.log("Ghumao Version: Live CI/CD Process - Success11");
 
     router.events.subscribe((event: RouterEvent) => {
 
