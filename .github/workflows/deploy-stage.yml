@@ -32,3 +32,4 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD_STAGE }}
           local-dir: ./dist/ghumao/
           server-dir: ${{ secrets.FTP_REMOTE_PATH_STAGE }}
+          delete: true
