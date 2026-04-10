@@ -1,0 +1,97 @@
+<div class="sidebar-container">
+    <app-sidenav></app-sidenav>
+
+    <div class="right-content min-vh-100">
+        <div class="container-fluid">
+            <span *ngIf="_isAdmin || _isSubAdmin;else other_content">
+                <app-page-title [title]="'Manage Enquiry'" [icon]="'fa-plus'" [button]="'Add Enquiry'" [url]="'/admin/enquiry/add'"></app-page-title>
+            </span>
+            <ng-template #other_content>
+                <app-page-title [title]="'Manage Enquiry'"></app-page-title>
+            </ng-template>
+
+
+            <!-- <div class="row">
+                <div class="col-12 mb-1">
+                    <button class="btn btn-danger float-end" (click)="multideleteEnquiryAction()"> <i class="fas fa-trash-alt"></i> Delete Multiple Enquiry</button>
+                </div>
+            </div> -->
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="card shadow">
+                        <div class="card-header text-danger" *ngIf="enquiry.length==0">
+                            No enqury found
+                        </div>
+                        <div class="card-body" *ngIf="enquiry.length>0">
+                            <table *ngIf="enquiry" datatable [dtOptions]="dtOptions" class="row-border hover">
+                                <thead>
+                                    <tr>
+
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Mobile</th>
+                                        <th>Destination</th>
+                                        <th>No Of Travellers</th>
+                                        <th>Departure Date</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let enquiry of enquiry">
+
+
+
+                                        <td>{{ enquiry.PersonName }}</td>
+                                        <td>{{ enquiry.EmailId }}</td>
+                                        <td>{{ enquiry.MobileNo }}</td>
+                                        <td>{{ enquiry.Destination }}</td>
+
+                                        <td>{{ enquiry.Noper }}</td>
+                                        <td>{{ enquiry.DepartureDate}}</td>
+
+                                        <!-- <td><button class='btn {{(enquiry.Mark==undefined)?"btn-default":"btn-info"}} text-white'>{{enquiry.Mark}}</button></td> -->
+                                        <!-- <td>
+                                            <a class="btn btn-secondary btn-sm me-2" [routerLink]=" '/admin/enquiry/view/' + enquiry._id "><i class="fas fa-pen me-2"></i> View</a>
+                                            <button class="btn btn-danger btn-sm"
+                                                [swal]="{
+                                                    icon: 'warning',
+                                                    title: 'Delete Enquiry',
+                                                    html: 'Are you sure you want to delete enquiry from <br/>&quot;<strong>' + enquiry.PersonName + '</strong>&quot;',
+                                                    confirmButtonColor: '#D60D45',
+                                                    confirmButtonText: 'Yes, delete it!',
+                                                    showCancelButton: true,
+                                                    cancelButtonColor: '#535C68'
+                                                }"
+                                                (confirm)="deleteEnquiryAction(enquiry._id)"
+                                            ><i class="fas fa-trash-alt me-2"></i> Delete</button>
+                                        </td> -->
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <form [formGroup]="assignEnquiryForm" (ngSubmit)="assignEnquiryAction()">
+                                <div class="row mt-5" *ngIf="_isAdmin || _isSubAdmin">
+                                    <div class="col-8">
+                                        <label for="userID" class="form-label">Select User</label>
+                                        <select class="form-select" aria-label="userID" id="userID" formControlName="AssignedUser" [(ngModel)]="userIDDefaultValue">
+                                        <option *ngFor="let user of users" value="{{user['UserId']}}">
+                                            {{user['Name']}}
+                                        </option>
+                                    </select>
+                                    </div>
+
+                                    <div class="col-4">
+                                        <p class="form-label">&nbsp;</p>
+                                        <button type="submit" class="btn btn-primary">Assign Multiple Enquiry</button>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

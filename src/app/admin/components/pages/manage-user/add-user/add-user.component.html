@@ -1,0 +1,174 @@
+<div class="sidebar-container">
+    <app-sidenav></app-sidenav>
+        
+    <div class="right-content min-vh-100">
+        <div class="container-fluid">
+            <app-page-title [title]="'Add User'" [icon]="'fa-arrow-alt-circle-left'" [button]="'Return Back To All Users'" [url]="'/admin/users'"></app-page-title>
+
+            <div class="row pb-5">
+
+                <div class="col-md-12 col-12 mb-3">
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <form [formGroup]="addUserForm" (ngSubmit)="addUserAction()">
+                                <!-- Error Alert -->
+                                <div *ngIf="error" class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    {{ errorMessage }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="resetError()"></button>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <div class="col-md-4 col-12">
+                                        <label for="RoleId" class="form-label">Select Role</label>
+                                        <select class="form-select" aria-label="RoleId" id="RoleId" formControlName="RoleId">
+                                            <option [selected]="true" value="0">Select Role</option>
+                                            <option value="1">Admin</option>
+                                            <option value="3">Sub-Admin</option>
+                                            <option value="2">User</option>
+                                        </select>
+
+                                        <small *ngIf="addUserForm.controls['RoleId'].valid && addUserForm.controls['RoleId'].touched" class="text-success">
+                                            <small>Role Selected</small>
+                                        </small>
+                                        <small *ngIf="addUserForm.controls['RoleId'].invalid && addUserForm.controls['RoleId'].touched" class="text-danger">
+                                            <small>Select Role</small>
+                                        </small>
+                                        <small *ngIf="addUserForm.controls['RoleId'].untouched" class="text-muted">
+                                            <small>Select Role</small>
+                                        </small>
+                                    </div>
+
+                                    <div class="col-md-4 col-12">
+                                        <label for="UserId" class="form-label">User Id</label>
+                                        <input type="text" class="form-control" id="UserId" formControlName="UserId" autocomplete="off">
+
+                                        <small *ngIf="addUserForm.controls['UserId'].valid && addUserForm.controls['UserId'].touched" class="text-success">
+                                            <small>User Id Set</small>
+                                        </small>
+                                        <small *ngIf="addUserForm.controls['UserId'].invalid && addUserForm.controls['UserId'].touched" class="text-danger">
+                                            <small>Please Enter User Id</small>
+                                        </small>
+                                        <small *ngIf="addUserForm.controls['UserId'].untouched" class="text-muted">
+                                            <small>Please Enter User Id</small>
+                                        </small>
+                                    </div>
+                                    <div class="col-md-4 col-12">
+                                        <label for="Name" class="form-label">Name</label>
+                                        <input type="text" class="form-control" id="Name" formControlName="Name" autocomplete="off">
+
+                                        <small *ngIf="addUserForm.controls['Name'].valid && addUserForm.controls['Name'].touched" class="text-success">
+                                            <small>Name Set</small>
+                                        </small>
+                                        <small *ngIf="addUserForm.controls['Name'].invalid && addUserForm.controls['Name'].touched" class="text-danger">
+                                            <small>Please Enter Name</small>
+                                        </small>
+                                        <small *ngIf="addUserForm.controls['Name'].untouched" class="text-muted">
+                                            <small>Please Enter Name</small>
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-md-4 col-12">
+                                        <div class="form-group">
+                                            <label for="DOB" class="form-label">Date of Birth</label>
+                                            <input name="DOB" id="DOB" type="date" class="form-control" value="dd-mm-yyyy" required formControlName="DOB">
+                                        </div>                                        
+                                        <small *ngIf="addUserForm.controls['DOB'].valid && addUserForm.controls['DOB'].touched" class="text-success">
+                                            <small>Date of Birth Set</small>
+                                        </small>
+                                        <small *ngIf="addUserForm.controls['DOB'].invalid && addUserForm.controls['DOB'].touched" class="text-danger">
+                                            <small>Invalid Date of Birth</small>
+                                        </small>
+                                        <small *ngIf="addUserForm.controls['DOB'].untouched" class="text-muted">
+                                            <small>Set Date of Birth</small>
+                                        </small>
+                                    </div>
+                                    <div class="col-md-4 col-12">
+                                        <label for="EmailId" class="form-label">EmailId</label>
+                                        <input type="text" class="form-control" id="EmailId" formControlName="EmailId" autocomplete="off">
+
+                                        <small *ngIf="addUserForm.controls['EmailId'].valid && addUserForm.controls['EmailId'].touched" class="text-success">
+                                            <small>EmailId Set</small>
+                                        </small>
+                                        <small *ngIf="addUserForm.controls['EmailId'].invalid && addUserForm.controls['EmailId'].touched" class="text-danger">
+                                            <small>Please Enter EmailId Correctly</small>
+                                        </small>
+                                        <small *ngIf="addUserForm.controls['EmailId'].untouched" class="text-muted">
+                                            <small>Please Enter EmailId</small>
+                                        </small>
+                                    </div>
+                                    <div class="col-md-4 col-12">
+                                        <label for="MobileNo" class="form-label">Mobile No</label>
+                                        <input type="text" class="form-control" id="MobileNo" formControlName="MobileNo" autocomplete="off">
+
+                                        <small *ngIf="addUserForm.controls['MobileNo'].valid && addUserForm.controls['MobileNo'].touched" class="text-success">
+                                            <small>Mobile No Set</small>
+                                        </small>
+                                        <small *ngIf="addUserForm.controls['MobileNo'].invalid && addUserForm.controls['MobileNo'].touched" class="text-danger">
+                                            <small>Please Enter Mobile No Correctly</small>
+                                        </small>
+                                        <small *ngIf="addUserForm.controls['MobileNo'].untouched" class="text-muted">
+                                            <small>Please Enter Mobile No</small>
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-md-4 col-12">
+                                        <label for="Gender" class="form-label">Gender</label>
+                                        <select class="form-select" aria-label="Gender" id="Gender" formControlName="Gender">
+                                            <option [selected]="true" value="0">Select Gender</option>
+                                            <option value="Male">Male</option>
+                                            <option value="Female">Female</option>
+                                        </select>                                        
+                                        <small *ngIf="addUserForm.controls['Gender'].valid && addUserForm.controls['Gender'].touched" class="text-success">
+                                            <small>Gender Selected</small>
+                                        </small>
+                                        <small *ngIf="addUserForm.controls['Gender'].invalid && addUserForm.controls['Gender'].touched" class="text-danger">
+                                            <small>Please Select Gender</small>
+                                        </small>
+                                        <small *ngIf="addUserForm.controls['Gender'].untouched" class="text-muted">
+                                            <small>Please Select Gender</small>
+                                        </small>
+                                    </div>
+                                    <div class="col-md-4 col-12">
+                                        <label for="Password" class="form-label">Password</label>
+                                        <input type="password" class="form-control" id="Password" formControlName="Password" autocomplete="off">
+
+                                        <small *ngIf="addUserForm.controls['Password'].valid && addUserForm.controls['Password'].touched" class="text-success">
+                                            <small>Password Set</small>
+                                        </small>
+                                        <small *ngIf="addUserForm.controls['Password'].invalid && addUserForm.controls['Password'].touched" class="text-danger">
+                                            <small>Please Enter Password Correctly</small>
+                                        </small>
+                                        <small *ngIf="addUserForm.controls['Password'].untouched" class="text-muted">
+                                            <small>Please Enter Password</small>
+                                        </small>
+                                    </div>
+                                    <div class="col-md-4 col-12">
+                                        <label for="ConfirmPassword" class="form-label">Confirm Password</label>
+                                        <input type="password" class="form-control" id="ConfirmPassword" formControlName="ConfirmPassword" autocomplete="off">
+
+                                        <small *ngIf="addUserForm.controls['ConfirmPassword'].valid && addUserForm.controls['ConfirmPassword'].touched" class="text-success">
+                                            <small>Confirm Password Set</small>
+                                        </small>
+                                        <small *ngIf="addUserForm.controls['ConfirmPassword'].invalid && addUserForm.controls['ConfirmPassword'].touched" class="text-danger">
+                                            <small>Please Confirm Password Correctly</small>
+                                        </small>
+                                        <small *ngIf="addUserForm.controls['ConfirmPassword'].untouched" class="text-muted">
+                                            <small>Please Confirm Password</small>
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="Address" class="form-label">User Address</label>
+                                    <textarea class="form-control" id="Address" rows="3" formControlName="Address"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Add User</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

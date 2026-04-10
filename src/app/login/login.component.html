@@ -1,0 +1,48 @@
+<div class="container-fluid bg-white g-0" [style]="{ 'background-image': 'url(' + bgImage + ')'}">
+    <div class="row g-0 min-vh-100 align-items-center">
+        <div class="col-xl-8 col-lg-7 col-md-6 col-sm-4 col-0">
+
+        </div>
+        <div class="col-xl-4 col-lg-5 col-md-6 col-sm-8 col-12 bg-light">
+            <div class="row g-0 min-vh-100 align-items-center">
+                <div class="col-12 px-5">
+                    <h1 class="display-3 mb-5">Login</h1>
+
+                    <!-- Error Alert -->
+                    <div *ngIf="error" class="alert alert-danger alert-dismissible fade show" role="alert">
+                        {{ errorMessage }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+
+                    <form class="gateway-form" [formGroup]="formGroup" (ngSubmit)="loginAction()">
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="email" formControlName="email">
+                            <small *ngIf="formGroup.controls['email'].invalid && (formGroup.controls['email'].dirty || formGroup.controls['email'].touched)" class="text-danger">
+                              <small>Please Enter Email Correctly</small>
+                            </small>
+                            <small *ngIf="formGroup.controls['email'].valid || formGroup.controls['email'].untouched" class="text-muted">
+                              <small>Please Enter Email</small>
+                            </small>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password" formControlName="password">
+                            <small *ngIf="formGroup.controls['password'].invalid && (formGroup.controls['password'].dirty || formGroup.controls['password'].touched)" class="text-danger">
+                              <small>Please Enter password Correctly. Min 6 characters required</small>
+                            </small>
+                            <small *ngIf="formGroup.controls['password'].valid || formGroup.controls['password'].untouched" class="text-muted">
+                              <small>Please Enter password</small>
+                            </small>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Remember Me</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

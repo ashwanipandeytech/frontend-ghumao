@@ -1,0 +1,60 @@
+// Body
+$body-bg: #f8fafc;
+
+// Typography
+$font-family-sans-serif: 'Poppins', sans-serif;;
+$font-size-base: 0.9rem;
+$line-height-base: 1.6;
+
+// font-family: 'Mukta', sans-serif;
+// font-family: 'Poppins', sans-serif;
+
+// Colors
+$blue: #005294;
+$indigo: #6610f2;
+$purple: #9561e2;
+$pink: #f66d9b;
+$red: #e3342f;
+$orange: #f6993f;
+$yellow: #ffed4a;
+$green: #38c172;
+$teal: #4dc0b5;
+$cyan: #6cb2eb;
+$gray: #495057;
+$gray-dark: #343a40;
+$secondary: #535C68;
+$success: #6AB04C;
+$info: #22A6B3;
+$warning: #F1C40F;
+$danger: #D60D45;
+$light: #f8f9fa;
+$dark: #2D3436;
+
+$utilities: (
+  "opacity": (
+    property: opacity,
+    responsive: true,
+    values: (
+      0: 0,
+      25: .25,
+      50: .5,
+      75: .75,
+      100: 1,
+    )
+  )
+);
+
+$utilities: (
+  "opacity": (
+    property: opacity,
+    class: opacity,
+    state: hover,
+    values: (
+      0: 0,
+      25: .25,
+      50: .5,
+      75: .75,
+      100: 1,
+    )
+  )
+);

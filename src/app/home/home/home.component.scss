@@ -1,0 +1,47 @@
+.h1font {
+    font-size: 38px;
+}
+
+.destination-section {
+    padding-bottom: 66px;
+}
+
+.shape-search-section {
+    padding-bottom: 50px;
+}
+
+.best-section .section-heading {
+    margin-bottom: 28px;
+}
+
+.best-section .gallery-img {
+    margin-bottom: 20px;
+}
+
+.desti-item .desti-image:before {
+    background-color: unset !important;
+}
+
+.bootstrap-datetimepicker-widget td {
+    border: 0px !important;
+}
+
+.bs-datepicker-body table td.week span {
+    color: #2dfbcd !important;
+}
+
+.bs-datepicker-body table td span.selected,
+.bs-datepicker-head,
+.bs-datepicker-head,
+.bs-datepicker button:active,
+.bs-datepicker-body table td.selected span,
+.bs-datepicker-body table td span[class*="select-"]:after,
+.bs-datepicker-body table td[class*="select-"] span:after,
+.bs-datepicker-body table td.active-week span:hover {
+    background-color: #F56960 !important;
+}
+
+.themed-tour,
+.section-margin {
+    margin-top: -6%
+}

@@ -1,0 +1,138 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+/* Importing Bootstrap SCSS file. */
+
+// @import "~bootstrap/scss/bootstrap";
+// /* Importing Datepicker SCSS file. */
+// @import "node_modules/ngx-bootstrap/datepicker/bs-datepicker";
+@import 'scss/variables';
+// Bootstrap
+// @import '~bootstrap/scss/bootstrap';
+// @import '~swiper/swiper-bundle';
+@import 'scss/color';
+@import 'scss/base';
+// @import 'scss/form';
+// @import 'scss/nav';
+@import 'scss/slider';
+@import 'scss/header-banner';
+@import 'scss/simple-image-parallax';
+@import 'scss/swiper';
+@import 'scss/carousal';
+@import 'scss/widget';
+@import 'scss/searchBoxCard';
+@import 'scss/serp-card';
+@import 'scss/category-card';
+@import 'scss/packageCards';
+@import 'scss/special-package-section';
+@import 'scss/destinations';
+@import 'scss/itinerary';
+@import 'scss/footer';
+@import 'scss/enquiry';
+@import 'scss/admin/sidebar-container';
+@import 'scss/admin/page-title';
+$theme-color-1:#3d4051;
+$theme-color-2: #ced4d4;
+$theme-color-3:#ffffff;
+$theme-color-4: #f6f6f6;
+$theme-color-5: #000;
+$theme-color-6: #dae1e2;
+h1 {
+    font-size: 32px !important;
+    ;
+}
+
+h2 {
+    font-size: 24px !important;
+}
+
+h3 {
+    font-size: 18px !important;
+}
+
+h4 {
+    font-size: 14px !important;
+}
+
+h5 {
+    font-size: 13px !important;
+}
+
+h6 {
+    font-size: 12px !important;
+}
+
+.sticky {
+    position: fixed;
+    top: 77px;
+    overflow: hidden;
+    z-index: 1;
+    background-color: #F56960;
+}
+
+.nav-tabs .nav-link:hover,
+.nav-tabs .nav-link:focus,
+.nav-tabs .nav-link.active {
+    color: #383838 !important;
+}
+
+.setheight {
+    height: 126px;
+}
+
+.package-content {
+    height: 300px;
+    ;
+}
+
+.innercontent {
+    height: 100px;
+}
+
+table thead tr {
+    background-color: rgb(245, 245, 245) !important;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.modalWindowconfigurator {
+    z-index: 9999 !important;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.button-primary {
+    color: white !important
+}
+
+// td {
+//     border-width: 0 0 0 0 !important;
+// }
+// th {
+//     border-width: 0 0 0 0 !important;
+// }
+.trip-search-section label {
+    display: inline-block;
+    margin-bottom: 10px;
+    font-size: 13px !important;
+    font-weight: normal;
+}
+
+.error-msg {
+    font-size: 13px !important;
+}
+
+.site-identity img {
+    max-width: unset !important;
+}

@@ -1,0 +1,33 @@
+.custom-horizontal {
+    border-bottom: 3px solid #0791BE;
+}
+
+.ul-margin {
+    margin-left: -5px;
+}
+
+.calandar-class {
+    position: absolute;
+    top: 28px;
+    left: 298px;
+    cursor: pointer;
+}
+
+.bootstrap-datetimepicker-widget td {
+    border: 0px !important;
+}
+
+.bs-datepicker-body table td.week span {
+    color: #2dfbcd !important;
+}
+
+.bs-datepicker-body table td span.selected,
+.bs-datepicker-head,
+.bs-datepicker-head,
+.bs-datepicker button:active,
+.bs-datepicker-body table td.selected span,
+.bs-datepicker-body table td span[class*="select-"]:after,
+.bs-datepicker-body table td[class*="select-"] span:after,
+.bs-datepicker-body table td.active-week span:hover {
+    background-color: #F56960 !important;
+}

@@ -1,0 +1,213 @@
+<footer id="colophon" class="site-footer footer-primary">
+    <div class="top-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <aside class="widget widget_text">
+                        <h4 class="widget-title">
+                            About <a class="ml-1" href="/aboutus"> Ghumao.in </a>
+                        </h4>
+                        <div class="textwidget widget-text">
+                            <strong>
+                              <a class="d-inline" href="/aboutus"> Ghumao.in </a>
+                            </strong> is India’s leading online travel company that delivers customised Domestic and International travel packages.
+                            <p>
+                                <strong class="">
+                              <a class="d-inline" href="/aboutus"> Read More </a>
+                            </strong>
+                            </p>
+
+                        </div>
+                        <!-- <div class="award-img">
+                            <a href="#"><img src="assets/images/logo6.png" alt=""></a>
+                            <a href="#"><img src="assets/images/logo2.png" alt=""></a>
+                        </div> -->
+                    </aside>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <aside class="widget widget_text">
+                        <!-- <h3 class="widget-title">CONTACT INFORMATION</h3>
+                        <div class="textwidget widget-text">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            <ul>
+                                <li>
+                                    <a href="tel:+919818306992">
+                                        <i class="fas fa-phone-alt"></i> 91-9818306992</a>
+                                </li>
+                                <li>
+                                    <a href="mailto:enquiry@ghumao.in">
+                                        <i class="fas fa-envelope"></i>
+                                        <span class="__cf_email__"> enquiry@ghumao.in</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <i class="fas fa-map-marker-alt"></i> 34/40, Old Rajinder Nagar, New Delhi-110060
+                                </li>
+                            </ul>
+                        </div> -->
+
+                        <div class="travel-package-content ">
+                            <h4 class="widget-title"> <a href="javascript:void(0)" class="tour-heading">India Tour Packages</a></h4>
+
+                            <ul>
+                                <li>
+
+                                    <ul>
+                                        <li> <a href="category/kashmir-packages"><i class="far fa-arrow-alt-circle-right"></i>Kashmir Tour Package</a></li>
+                                        <li> <a href="category/himachal-packages"><i class="far fa-arrow-alt-circle-right"></i>Himachal Tour Package</a> </li>
+                                        <li> <a href="category/kerala-package"><i class="far fa-arrow-alt-circle-right"></i>Kerala Tour Package</a></li>
+                                        <li> <a href="category/gujarat-package"><i class="far fa-arrow-alt-circle-right"></i>Gujarat Tour Package</a></li>
+                                        <li> <a href="category/northeast-package"><i class="far fa-arrow-alt-circle-right"></i>North East Tour Package</a></li>
+                                        <li><a href="category/karnataka-package"><i class="far fa-arrow-alt-circle-right"></i>Karnataka Tour Package</a> </li>
+                                    </ul>
+
+                                </li>
+
+                            </ul>
+                        </div>
+                    </aside>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <aside class="widget widget_text">
+                        <!-- <h3 class="widget-title">Popular packages</h3>
+                        <ul>
+
+
+                            <li *ngFor=" let item of popularpackages">
+                                <div class=" d-flex justify-content-between">
+                                    <b *ngFor="let packageName of item">
+                                    <a href="#"> {{ packageName.PackageName  | uppercase }}</a>
+                                </b>
+
+                                </div>
+
+                            </li>
+
+                        </ul> -->
+                        <div class="travel-package-content ">
+                            <h4 class="widget-title"> <a href="javascript:void(0)" class="tour-heading">International Tour packages</a></h4>
+
+                            <ul>
+                                <li>
+
+                                    <ul>
+                                        <li> <a href="category/europe"><i class="far fa-arrow-alt-circle-right"></i>Europe Tour Package</a></li>
+                                        <li> <a href="category/indonesia"><i class="far fa-arrow-alt-circle-right"></i>Bali Tour Package</a> </li>
+                                        <li> <a href="category/uae"><i class="far fa-arrow-alt-circle-right"></i>UAE Tour Package</a></li>
+                                        <li> <a href="category/malaysia"><i class="far fa-arrow-alt-circle-right"></i>Malaysia Tour Package</a></li>
+                                        <li> <a href="category/australia"><i class="far fa-arrow-alt-circle-right"></i>Australia East Tour Package</a></li>
+                                        <li><a href="category/thailand"><i class="far fa-arrow-alt-circle-right"></i>Thailand Tour Package</a> </li>
+                                    </ul>
+
+                                </li>
+
+                            </ul>
+                        </div>
+                    </aside>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <aside class="widget widget_newslatter">
+                        <h4 class="widget-title">SUBSCRIBE US</h4>
+                        <div class="widget-text">
+                            Sign up for our mailing list to get the latest updates and offers.
+                        </div>
+
+                        <form class="newslatter-form" #newinquiryform="ngForm" name="form" (ngSubmit)="submitinquiryforSignUp(newinquiryform)">
+
+                            <input type="email" placeholder="Your Email Address" name="email" [(ngModel)]="newuseremail" #newemail="ngModel" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$" autocomplete="off">
+
+
+
+
+                            <input type="submit" name="s" value="SUBSCRIBE NOW">
+                        </form>
+                    </aside>
+                </div>
+            </div>
+            <!-- <div class="d-flex justify-content-end">
+                <i class='fa fa-whatsapp'></i>
+                <button type="button" class="btn  btn-secondary shadow-none">Enquire Now <i class="fa fa-question-circle ml-1" aria-hidden="true"></i></button>
+                <button type="button" class="btn  btn-secondary  ml-2 mr-2">WhatsApp <i class="fab fa-whatsapp ml-1" aria-hidden="true"></i></button>
+                <button type="button" class="btn  btn-secondary ">Call Us <i class="fa fa-phone ml-1" aria-hidden="true"></i></button>
+            </div> -->
+        </div>
+    </div>
+    <div class="buttom-footer">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-5">
+                    <div class="footer-menu">
+                        <ul>
+                            <li>
+                                <a href="#">Privacy Policy</a>
+                            </li>
+                            <li>
+                                <a href="#">Term & Condition</a>
+                            </li>
+                            <li>
+                                <a href="#">FAQ</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-2 text-center">
+                    <div class="footer-logo">
+                        <!-- <a href="#"><img src="assets/images/logo.png" alt=""></a> -->
+                        <a href="#"><img src="assets/images/ghumaologo.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="copy-right text-right">Copyright © 2022 Ghumao.in. All rights reserved</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<div class="position-fixed  text-white align-items-center justify-content-center d-none d-sm-flex" (click)="utilityservice.scrollToComponent('inquiryformsection')" style="width: 39px;
+    height: 38px;
+    bottom: 1px;
+    right: 127px;
+    z-index: 999;
+    cursor: pointer;
+    border-radius: 20px;
+    background-color: #f56960;">
+
+    <i class="fa fa-question-circle" aria-hidden="true" style="font-size: 27px;"></i>
+</div>
+
+<div class="position-fixed text-white align-items-center justify-content-center d-none d-sm-flex " style=" width: 39px; height: 38px; bottom: 1px; right: 70px; z-index: 999; cursor: pointer; border-radius: 20px; background-color: #f56960; ">
+
+    <a href="https://api.whatsapp.com/send?phone=919818306992 " style="color: white;" class="float-whatsapp "> <i class="fab fa-whatsapp " aria-hidden="true " style="font-size: 27px; "></i></a>
+</div>
+<div class="position-fixed text-white align-items-center justify-content-center d-none d-sm-flex " style=" width: 39px; height: 38px; bottom: 1px; right: 15px; z-index: 999; cursor: pointer; border-radius: 20px; background-color: #f56960; ">
+
+    <a href="tel:+919818306992 " style="color: white;"> <i class="fa fa-phone " aria-hidden="true " style="font-size: 20px; "></i></a>
+</div>
+
+
+
+
+
+
+
+<a id="backTotop " href="# " class="to-top-icon ">
+    <i class="fas fa-chevron-up "></i>
+</a>
+<!-- custom search field html -->
+<div class="header-search-form ">
+    <div class="container ">
+        <div class="header-search-container ">
+            <form class="search-form " role="search " method="get ">
+                <input type="text " name="s " placeholder="Enter your text... ">
+            </form>
+            <a href="# " class="search-close ">
+                <i class="fas fa-times "></i>
+            </a>
+        </div>
+    </div>
+</div>
+<!-- <script src="src/assets/js/slick.min.js "></script>
+<script src="src/assets/js/jquery.slicknav.js "></script>
+<script src="src/assets/js/custom.min.js "></script>
+<script src="src/assets/js/custom.js "></script> -->

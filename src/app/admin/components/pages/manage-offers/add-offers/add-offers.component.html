@@ -1,0 +1,149 @@
+
+<div class="sidebar-container">
+    <app-sidenav></app-sidenav>
+        
+    <div class="right-content min-vh-100">
+        <div class="container-fluid">
+            <app-page-title [title]="'Add Offer'" [icon]="'fa-arrow-alt-circle-left'" [button]="'Return Back To All Offers'" [url]="'/admin/offers'"></app-page-title>
+
+            <div class="row pb-5">
+
+                <div class="col-md-8 col-12 mb-3">
+                    <form class="gateway-form" [formGroup]="addOfferFrom" (ngSubmit)="addOfferAction()">
+                        <div class="card shadow">
+                            <div class="card-body">
+                                <!-- Error Alert -->
+                                <div *ngIf="error" class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    {{ errorMessage }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="resetError()"></button>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="OfferNumber" class="form-label">Offer Number</label>
+                                    <select class="form-control form-control-lg" id="OfferNumber" formControlName="OfferNumber">
+                                        <option value="1">01</option>
+                                        <option value="2">02</option>
+                                        <option value="3">03</option>
+                                    </select>
+
+                                    <small *ngIf="addOfferFrom.controls['OfferNumber'].valid && addOfferFrom.controls['OfferNumber'].touched" class="text-success">
+                                        <small>Title Number</small>
+                                    </small>
+                                    <small *ngIf="addOfferFrom.controls['OfferNumber'].invalid && addOfferFrom.controls['OfferNumber'].touched" class="text-danger">
+                                        <small>Please Select Offer Number</small>
+                                    </small>
+                                    <small *ngIf="addOfferFrom.controls['OfferNumber'].untouched" class="text-muted">
+                                        <small>Please Select Offer Number</small>
+                                    </small>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="OfferTitle" class="form-label">Offer Title</label>
+                                    <input type="text" class="form-control form-control-lg" id="OfferTitle" formControlName="OfferTitle" autocomplete="off">
+
+                                    <small *ngIf="addOfferFrom.controls['OfferTitle'].valid && addOfferFrom.controls['OfferTitle'].touched" class="text-success">
+                                        <small>Title Set</small>
+                                    </small>
+                                    <small *ngIf="addOfferFrom.controls['OfferTitle'].invalid && addOfferFrom.controls['OfferTitle'].touched" class="text-danger">
+                                        <small>Please Enter Offer Title</small>
+                                    </small>
+                                    <small *ngIf="addOfferFrom.controls['OfferTitle'].untouched" class="text-muted">
+                                        <small>Please Enter Offer Title</small>
+                                    </small>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <div class="col-md-12 col-12">
+                                        <label for="TitleSlug" class="form-label">Offer Sub Title</label>
+                                        <input type="text" class="form-control" id="TitleSlug" formControlName="TitleSlug" autocomplete="off">
+
+                                        <small *ngIf="addOfferFrom.controls['TitleSlug'].valid && addOfferFrom.controls['TitleSlug'].touched" class="text-success">
+                                            <small>Title Set</small>
+                                        </small>
+                                        <small *ngIf="addOfferFrom.controls['TitleSlug'].invalid && addOfferFrom.controls['TitleSlug'].touched" class="text-danger">
+                                            <small>Please Enter Offer Subtitle</small>
+                                        </small>
+                                        <small *ngIf="addOfferFrom.controls['TitleSlug'].untouched" class="text-muted">
+                                            <small>Please Enter Offer Subtitle</small>
+                                        </small>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <div class="col-md-12 col-12">
+                                        <label for="Link" class="form-label">Offer Link</label>
+                                        <input type="text" class="form-control" id="Link" formControlName="Link" autocomplete="off">
+
+                                        <small *ngIf="addOfferFrom.controls['Link'].valid && addOfferFrom.controls['Link'].touched" class="text-success">
+                                            <small>Link</small>
+                                        </small>
+                                        <small *ngIf="addOfferFrom.controls['Link'].invalid && addOfferFrom.controls['Link'].touched" class="text-danger">
+                                            <small>Please Enter Offer Link</small>
+                                        </small>
+                                        <small *ngIf="addOfferFrom.controls['Link'].untouched" class="text-muted">
+                                            <small>Please Enter Offer Link</small>
+                                        </small>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="card-body">
+        
+                                <button type="submit" class="btn btn-primary">Add Offer</button>
+                            
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Right Sidebar -->
+                <div class="col-md-4 col-12 mb-3">
+                    <div class="card shadow mb-3" id="uploadImageCard">
+                        <img class="card-img-top" id="blah" [src]="imageSrc || 'http://placehold.it/570x400'" alt="your image" />
+                        <div class="card-body">
+                            <form [formGroup]="imageUploadForm" (ngSubmit)="imageUpload()">
+                                <label for="Image" class="form-label">Package Image</label>
+                                <input class="form-control" type="file" id="Image" formControlName="Image" (change)="onFileChange($event)">
+                                
+                                <small *ngIf="imageUploadForm.controls['Image'].valid && imageUploadForm.controls['Image'].touched" class="text-success">
+                                    <small>Image URL Entered</small>
+                                </small>
+                                <small *ngIf="imageUploadForm.controls['Image'].invalid && imageUploadForm.controls['Image'].touched" class="text-danger">
+                                    <small>Please Enter Image URL</small>
+                                </small>
+                                <small *ngIf="imageUploadForm.controls['Image'].untouched" class="text-muted">
+                                    <small>Please Select Image URL</small>
+                                </small>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="card shadow mb-3" id="uploadUrlCard" style="display: none;">
+                        <div class="card-body">
+                            <form [formGroup]="imageUploadForm">
+                                <label for="Image" class="form-label">Offer Image</label>
+                                <input class="form-control" type="text" id="ImageUrl" formControlName="Image">
+                                
+                                <small *ngIf="imageUploadForm.controls['Image'].valid && imageUploadForm.controls['Image'].touched" class="text-success">
+                                    <small>Image Selected</small>
+                                </small>
+                                <small *ngIf="imageUploadForm.controls['Image'].invalid && imageUploadForm.controls['Image'].touched" class="text-danger">
+                                    <small>Please Enter Image</small>
+                                </small>
+                                <small *ngIf="imageUploadForm.controls['Image'].untouched" class="text-muted">
+                                    <small>Please Select Image</small>
+                                </small>
+                            </form>
+                        </div>
+                    </div>
+
+                    <p>Note : </p>
+                    <p>Offer Number 1 image size : 570*400</p>
+                    <p>Offer Number 1 image size : 270*400</p>
+                    <p>Offer Number 1 image size : 270*400</p>
+                </div>
+
+            </div>
+            
+        </div>
+    </div>
+</div>

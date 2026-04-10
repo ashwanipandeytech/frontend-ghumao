@@ -1,0 +1,124 @@
+<div class="sidebar-container">
+    <app-sidenav></app-sidenav>
+
+    <div class="right-content min-vh-100">
+        <div class="container-fluid">
+            <app-page-title [title]="'Edit  Testimonial'" [icon]="'fa-arrow-alt-circle-left'" [button]="'Return Back To All Testimonial'" [url]="'/admin/testimonial'"></app-page-title>
+
+            <div class="row pb-5">
+
+                <div class="col-md-8 col-12 mb-3">
+                    <form class="gateway-form" [formGroup]="addTestimonialFrom" (ngSubmit)="addTestimonialAction()">
+                        <div class="card shadow">
+                            <div class="card-body">
+                                <!-- Error Alert -->
+                                <div *ngIf="error" class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    {{ errorMessage }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="resetError()"></button>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="Name" class="form-label">Name</label>
+                                    <input type="text" class="form-control form-control-lg" id="Name" formControlName="Name" autocomplete="off">
+
+                                    <small *ngIf="addTestimonialFrom.controls['Name'].valid && addTestimonialFrom.controls['Name'].touched" class="text-success">
+                                        <small>Title Set</small>
+                                    </small>
+                                    <small *ngIf="addTestimonialFrom.controls['Name'].invalid && addTestimonialFrom.controls['Name'].touched" class="text-danger">
+                                        <small>Please Enter Name</small>
+                                    </small>
+                                    <small *ngIf="addTestimonialFrom.controls['Name'].untouched" class="text-muted">
+                                        <small>Please Enter Name</small>
+                                    </small>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <div class="col-md-12 col-12">
+                                        <label for="Address" class="form-label">Address</label>
+                                        <input type="text" class="form-control" id="Address" formControlName="Address" autocomplete="off">
+
+                                        <small *ngIf="addTestimonialFrom.controls['Address'].valid && addTestimonialFrom.controls['Address'].touched" class="text-success">
+                                            <small>Title Set</small>
+                                        </small>
+                                        <small *ngIf="addTestimonialFrom.controls['Address'].invalid && addTestimonialFrom.controls['Address'].touched" class="text-danger">
+                                            <small>Please Enter Address</small>
+                                        </small>
+                                        <small *ngIf="addTestimonialFrom.controls['Address'].untouched" class="text-muted">
+                                            <small>Please Enter Address</small>
+                                        </small>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <div class="col-md-12 col-12">
+                                        <label for="Testimonial" class="form-label">Testimonial</label>
+                                        <textarea class="form-control" id="Testimonial" formControlName="Testimonial" autocomplete="off"></textarea>
+
+                                        <small *ngIf="addTestimonialFrom.controls['Testimonial'].valid && addTestimonialFrom.controls['Testimonial'].touched" class="text-success">
+                                            <small>Title Set</small>
+                                        </small>
+                                        <small *ngIf="addTestimonialFrom.controls['Testimonial'].invalid && addTestimonialFrom.controls['Testimonial'].touched" class="text-danger">
+                                            <small>Please Enter Testimonial</small>
+                                        </small>
+                                        <small *ngIf="addTestimonialFrom.controls['Testimonial'].untouched" class="text-muted">
+                                            <small>Please Enter Testimonial</small>
+                                        </small>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="card-body">
+
+                                <button type="submit" class="btn btn-primary">Update Testimonial</button>
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Right Sidebar -->
+                <div class="col-md-4 col-12 mb-3">
+                    <div class="card shadow mb-3" id="uploadImageCard">
+                        <img class="card-img-top" id="blah" [src]="imageSrc || 'http://placehold.it/250x250'" alt="your image" />
+                        <div class="card-body">
+                            <form [formGroup]="imageUploadForm" (ngSubmit)="imageUpload()">
+                                <label for="Image" class="form-label">User Image</label>
+                                <input class="form-control" type="file" id="Image" formControlName="Image" (change)="onFileChange($event)">
+
+                                <small *ngIf="imageUploadForm.controls['Image'].valid && imageUploadForm.controls['Image'].touched" class="text-success">
+                                    <small>Image URL Entered</small>
+                                </small>
+                                <small *ngIf="imageUploadForm.controls['Image'].invalid && imageUploadForm.controls['Image'].touched" class="text-danger">
+                                    <small>Please Enter Image URL</small>
+                                </small>
+                                <small *ngIf="imageUploadForm.controls['Image'].untouched" class="text-muted">
+                                    <small>Please Select Image URL</small>
+                                </small>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="card shadow mb-3" id="uploadUrlCard" style="display: none;">
+                        <div class="card-body">
+                            <form [formGroup]="imageUploadForm">
+                                <label for="Image" class="form-label">User Image</label>
+                                <input class="form-control" type="text" id="ImageUrl" formControlName="Image">
+
+                                <small *ngIf="imageUploadForm.controls['Image'].valid && imageUploadForm.controls['Image'].touched" class="text-success">
+                                    <small>Image Selected</small>
+                                </small>
+                                <small *ngIf="imageUploadForm.controls['Image'].invalid && imageUploadForm.controls['Image'].touched" class="text-danger">
+                                    <small>Please Enter Image</small>
+                                </small>
+                                <small *ngIf="imageUploadForm.controls['Image'].untouched" class="text-muted">
+                                    <small>Please Select Image</small>
+                                </small>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,65 @@
+<div class="sidebar-container">
+    <app-sidenav></app-sidenav>
+
+    <div class="right-content min-vh-100">
+        <div class="container-fluid">
+            <app-page-title [title]="'Edit Seo'" [icon]="'fa-arrow-alt-circle-left'" [button]="'Return Back To All Seo'" [url]="'/admin/Seos'"></app-page-title>
+
+            <div class="row pb-5">
+
+                <div class="col-md-8 col-12 mb-3">
+                    <form class="gateway-form" [formGroup]="editSeosFrom" (ngSubmit)="editSeoAction()">
+                        <div class="card shadow">
+                            <div class="card-body">
+                                <!-- Error Alert -->
+                                <div *ngIf="error" class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    {{ errorMessage }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="resetError()"></button>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="Slug" class="form-label">Seo Slug</label>
+                                    <input type="text" class="form-control form-control-lg" id="Slug" formControlName="Slug" autocomplete="off">
+
+                                    <small *ngIf="editSeosFrom.controls['Slug'].valid && editSeosFrom.controls['Slug'].touched" class="text-success">
+                                        <small>SEO Slug</small>
+                                    </small>
+                                    <small *ngIf="editSeosFrom.controls['Slug'].invalid && editSeosFrom.controls['Slug'].touched" class="text-danger">
+                                        <small>Please Enter Seo Slug</small>
+                                    </small>
+                                    <small *ngIf="editSeosFrom.controls['Slug'].untouched" class="text-muted">
+                                        <small>Please Enter Seo Slug</small>
+                                    </small>
+                                </div>
+
+
+                                <div class="mb-3">
+                                    <label for="Title" class="form-label">Seo Title</label>
+                                    <textarea class="form-control" id="Title" rows="3" formControlName="Title"></textarea>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="Description" class="form-label">Seo Description</label>
+                                    <textarea class="form-control" id="Description" rows="3" formControlName="Description"></textarea>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="Keywords" class="form-label">Seo Keywords</label>
+                                    <textarea class="form-control" id="Keywords" rows="3" formControlName="Keywords"></textarea>
+                                </div>
+
+                            </div>
+                            <div class="card-body">
+
+                                <button type="submit" class="btn btn-primary">Add Seo</button>
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>

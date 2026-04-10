@@ -1,0 +1,62 @@
+<div class="sidebar-container">
+    <app-sidenav></app-sidenav>
+        
+    <div class="right-content min-vh-100">
+        <div class="container-fluid">
+            <app-page-title [title]="'View Feedback'" [icon]="'fa-arrow-alt-circle-left'" [button]="'Return Back To All Feedbacks'" [url]="'/admin/feedback'"></app-page-title>
+
+            <div class="row pb-5">
+
+                <div class="col-12">
+                    <div class="card shadow">
+                        <div class="card-body">
+
+                            <table *ngIf="feedback" class="table">
+                                <thead>
+                                    <th>Field</th>
+                                    <th>Value</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Person Name</td>
+                                        <td>{{ feedback['PersonName'] }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>No Of Persons</td>
+                                        <td>{{ feedback['NoofPersons'] }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Email Id</td>
+                                        <td>{{ feedback['EmailId'] }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mobile No</td>
+                                        <td>{{ feedback['MobileNo'] }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Package Id</td>
+                                        <td>{{ feedback['PackageId'] }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Package Name</td>
+                                        <td>{{ feedback['PackageName'] }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Journey Date</td>
+                                        <td>{{ feedback['JourneyDate'] }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Message</td>
+                                        <td>{{ feedback['Message'] }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+<div class="testimonial-section mt-3" style="background-image: url(assets/images/img23.jpg);">
+    <div class="container">
+        <div class="row" *ngIf="testimonials!=''">
+            <div class="col-lg-10 offset-lg-1">
+
+                <ngx-slick-carousel class="carousel testimonial-inner testimonial-slider" #slickModal1="slick-carousel" [config]="slideConfigTestimonial" (init)="slickInit($event)" (breakpoint)="breakpoint($event)">
+                    <div ngxSlickItem class="testimonial-item text-center slide" *ngFor="let item of testimonials;">
+                        <figure class="testimonial-img">
+                            <img src="{{item.ImageSrc}}" alt="">
+                        </figure>
+                        <div class="testimonial-content" *ngIf="item.Testimonial!=''">
+                            <p>{{item.Testimonial}}
+                            </p>
+                            <cite *ngIf="item.Name!=''">
+                            -{{item.Name}}
+
+                     </cite>
+                        </div>
+                    </div>
+
+                </ngx-slick-carousel>
+
+            </div>
+        </div>
+    </div>
+</div>

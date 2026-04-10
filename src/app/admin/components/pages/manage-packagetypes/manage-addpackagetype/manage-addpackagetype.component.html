@@ -1,0 +1,67 @@
+<div class="sidebar-container">
+    <app-sidenav></app-sidenav>
+
+    <div class="right-content min-vh-100">
+        <div class="container-fluid">
+            <app-page-title [title]="'Add Package Group'" [icon]="'fa-arrow-alt-circle-left'" [button]="'Return Back To All Packages Group'" [url]="'/admin/packages-group'"></app-page-title>
+
+            <div class="row pb-5">
+
+                <div class="col-md-12 col-12 mb-3">
+
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <!-- <pre>{{packageData |json}}</pre> -->
+                            <form (ngSubmit)="addPackageGroupAction()">
+                                <label for="Package Group " class="form-label " *ngIf="uploadImage">Package Group </label> <span *ngIf="uploadImage" class="ml-3 btn btn-sm btn-info" (click)="addMore();"> Add More</span>
+
+                                <div class="row mt-2" *ngIf="uploadImage">
+
+
+
+                                    <div class="col-md-3" *ngFor="let item of PackageGroup;let i=index">
+                                        <div class="card shadow mb-3" id="uploadImageCard">
+                                            <img class="card-img-top" id="blah" [src]="item.Image" onerror="this.onerror=null;this.src='/assets/images/placeholder.jpg'" alt=" image" />
+                                            <div class="card-body">
+
+                                                <label for="SliderImage1" class="form-label">{{i+1}}. Package Group Image </label>
+                                                <input class="form-control" type="file" id="SliderImage1" (change)="onFileSliderChange($event,i)">
+
+
+                                                <input type="text" class="form-control mt-2 mb-2" placeholder="Title" [(ngModel)]="item.moduleCode" [ngModelOptions]="{standalone: true}">
+
+                                                <input type="text" class="form-control mb-2" placeholder="Sub title" [(ngModel)]="item.ImageType" [ngModelOptions]="{standalone: true}">
+
+                                                <input type="text" class="form-control mb-2" placeholder="Slug" [(ngModel)]="item.moduleId" [ngModelOptions]="{standalone: true}">
+                                                <!-- <small *ngIf="imageUploadSliderForm.controls['SliderImage1'].valid && imageUploadSliderForm.controls['SliderImage1'].touched" class="text-success">
+                              <small>Image URL Entered</small>
+                                            </small>
+                                            <small *ngIf="imageUploadSliderForm.controls['SliderImage1'].invalid && imageUploadSliderForm.controls['SliderImage1'].touched" class="text-danger">
+                              <small>Please Enter Image URL</small>
+                                            </small>
+                                            <small *ngIf="imageUploadSliderForm.controls['SliderImage1'].untouched" class="text-muted">
+                              <small>Please Select Image URL</small>
+                                            </small> -->
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+
+
+                                <button type="submit" class="btn btn-primary">Add Package Group</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Sidebar -->
+
+
+            </div>
+        </div>
+    </div>
+</div>

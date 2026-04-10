@@ -1,0 +1,258 @@
+<header id="masthead" class="site-header header-primary" [ngClass]="{'aboutus': iSAboutUs}">
+    <!-- header html start -->
+    <div class="top-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 d-none d-lg-block">
+                    <div class="header-contact-info">
+                        <ul>
+                            <li>
+                                <a href="tel:+91-9818306992"><i class="fas fa-phone-alt"></i> +91-9818306992
+                                </a>
+                            </li>
+                            <li>
+                                <a href="email:enquiry@ghumao.in"><i class="fas fa-envelope"></i> <span class="__cf_email__" >enquiry@ghumao.in</span></a>
+                            </li>
+                            <li>
+                                <i class="fas fa-map-marker-alt"></i> 34/40, Old Rajinder Nagar, New Delhi-110060</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 d-flex justify-content-lg-end justify-content-between">
+                    <div class="header-social social-links">
+                        <ul>
+                            <li><a href="https://www.facebook.com/Ghumaoin-103491739177635/?ref=pages_you_manage"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
+                            <li><a href="https://twitter.com/Ghumaoin"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
+                            <li><a href="https://www.instagram.com/ghumao.in/"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
+                            <!-- <li><a href="#"><i class="fab fa-linkedin" aria-hidden="true"></i></a></li> -->
+                        </ul>
+                    </div>
+                    <!-- <div class="header-search-icon">
+                        <button class="search-icon">
+                    <i class="fas fa-search"></i>
+                 </button>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bottom-header" id="bottomheader">
+        <div class="container d-flex justify-content-between align-items-center">
+            <div class="site-identity">
+                <h1 class="site-title">
+                    <a href="index.html">
+                        <!-- <img class="white-logo" src="assets/images/logo.png" alt="logo">
+                        <img class="black-logo" src="assets/images/logo1.png" alt="logo"> -->
+                        <img class="white-logo" src="assets/images/ghumaologo.png" alt="logo">
+                        <img class="black-logo" src="assets/images/ghumaologoscroll.png" alt="logo">
+
+                    </a>
+                </h1>
+            </div>
+            <div class="main-navigation d-none d-lg-block">
+
+
+
+
+
+                <nav id="navigation1" class="navigation d-none">
+                    <ul>
+                        <li class="menu-item-has-children">
+                            <a href="/">Home</a>
+                        </li>
+
+                        <!-- <li class="menu-item-has-children">
+                            <a href="#">Kashmir Tour
+                        </a>
+                            <ul>
+                                <li>
+                                    <a routerLink="/colorful-rajasthan">Colourful Rajasthan </a>
+                                </li>
+                                <li>
+                                    <a routerLink="/amazing-rajasthan">Amazing Rajasthan</a>
+                                </li>
+                                <li>
+                                    <a routerLink="/rangilo-rajasthan">Rangilo Rajasthan with Sand Dunes</a>
+                                </li>
+                                <li>
+                                    <a routerLink="/rajasthan-sandunes">Rajasthan with Sand Dunes</a>
+                                </li>
+                                <li>
+                                    <a routerLink="/rajasthan-ajmer-pushkar">Golden Triangle tour with Ajmer &amp; Pushkar</a>
+                                </li>
+
+
+                                <li>
+                                    <a routerLink="/rajasthan-ranthambore-jungle-safari">Golden Triangle tour with Ranthambore Jungle Safari</a>
+                                </li>
+                                <li>
+                                    <a routerLink="/beautiful-udaipur">Beautiful Udaipur with Mount Abu</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="menu-item-has-children">
+                            <a href="#">Himachal Tour
+                      </a>
+                            <ul>
+                                <li>
+                                    <a routerLink="/colorful-rajasthan">Colourful Rajasthan </a>
+                                </li>
+                                <li>
+                                    <a routerLink="/amazing-rajasthan">Amazing Rajasthan</a>
+                                </li>
+                                <li>
+                                    <a routerLink="/rangilo-rajasthan">Rangilo Rajasthan with Sand Dunes</a>
+                                </li>
+                                <li>
+                                    <a routerLink="/rajasthan-sandunes">Rajasthan with Sand Dunes</a>
+                                </li>
+                                <li>
+                                    <a routerLink="/rajasthan-ajmer-pushkar">Golden Triangle tour with Ajmer &amp; Pushkar</a>
+                                </li>
+
+
+                                <li>
+                                    <a routerLink="/rajasthan-ranthambore-jungle-safari">Golden Triangle tour with Ranthambore Jungle Safari</a>
+                                </li>
+                                <li>
+                                    <a routerLink="/beautiful-udaipur">Beautiful Udaipur with Mount Abu</a>
+                                </li>
+                            </ul>
+                        </li> -->
+
+
+                        <ng-container *ngIf="MenuList!=''">
+
+                            <li class="menu-item-has-children dropdown-megamenu" *ngFor="let item of MenuList">
+                                <a href="#">{{item.CategoryName}}
+                                </a>
+                                <ul *ngIf="item.Packages!=''">
+
+                                    <li *ngFor="let innerItem of item.Packages">
+                                        <a [routerLink]="['package/'+innerItem.PackageSlug]">{{innerItem.PackageName}} </a>
+
+
+                                    </li>
+
+
+                                </ul>
+
+
+
+
+
+
+                            </li>
+                        </ng-container>
+
+
+                    </ul>
+                </nav>
+
+                <nav id="navigation" class="  navbar navbar-expand-lg navbar-dark ">
+                    <!-- <a class="navbar-brand" href="#">Mega Dropdown</a> -->
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+
+                    <div class="collapse navbar-collapse navigation" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/">Home</a>
+                            </li>
+                            <li class="nav-item " *ngFor="let item of MenuList" [ngClass]="{'dropdown': item.children_recursive!=''}">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                         {{item.CategoryName}}
+                        </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <div class="p-2">
+                                        <div class="row">
+                                            <ng-container *ngTemplateOutlet="Recursion; context:{ list: item.children_recursive}"></ng-container>
+
+
+                                            <!-- <div class="col-md-6" *ngFor="let innerItem of item.children_recursive">
+                                                {{innerItem.CategoryName}}
+
+                                                <div class="row">
+                                                    <div class="col-md-6" *ngFor="let innerItem of item.children_recursive">
+                                                        {{innerItem.CategoryName}}
+                                                    </div>
+                                                </div>
+
+                                            </div> -->
+
+                                        </div>
+                                    </div>
+                                    <!--  /.container  -->
+
+
+                                </div>
+                            </li>
+
+
+
+
+
+
+
+
+
+
+                        </ul>
+
+                    </div>
+
+
+                </nav>
+
+
+
+
+
+
+            </div>
+            <div class="header-btn">
+                <a (click)="utilityservice.scrollToComponent('inquiryformsection')" class="button-primary cursor-pointer" role="button">Enquire Now</a>
+            </div>
+        </div>
+    </div>
+    <div class="mobile-menu-container"></div>
+
+
+
+    <ng-template #Recursion let-list="list">
+
+        <div class="col-4 mt-2" *ngFor="let item of list">
+
+
+
+            <a routerLink="category/{{item.CategorySlug}}" style="display: contents;" [ngClass]="{'active': item.CategorySlug==slug}" class="text-dark btn btn-link w-100">
+                <strong>  {{item.CategoryName}}</strong> </a>
+            <!-- <pre>{{item.citiesList|json}}</pre> -->
+            <div *ngIf="item.citiesList">
+                <div class="p-1" *ngFor="let Items of item.citiesList">
+
+                    <a routerLink="category/{{item.CategorySlug}}" style="display: contents;" class="text-dark btn btn-link w-100">
+                      {{Items.city}}
+                    </a>
+                </div>
+            </div>
+
+
+            <div class="row" *ngIf="item.children_recursive.length > 0">
+
+                <ng-container *ngTemplateOutlet="Recursion; context:{ list: item.children_recursive }"></ng-container>
+            </div>
+
+        </div>
+
+
+
+        <!-- <li *ngFor="let item of list">
+            <a href="#">{{ item.CategoryName }}</a>
+            <ul *ngIf="item.children_recursive.length > 0">
+                <ng-container *ngTemplateOutlet="Recursion; context:{ list: item.children_recursive }"></ng-container>
+            </ul>
+        </li> -->
+    </ng-template>
+</header>

@@ -1,0 +1,183 @@
+<div class="sidebar-container">
+    <app-sidenav></app-sidenav>
+        
+    <div class="right-content min-vh-100">
+        <div class="container-fluid">
+            <app-page-title [title]="'Add Destination'" [icon]="'fa-arrow-alt-circle-left'" [button]="'Return Back To All Destinations'" [url]="'/admin/destinations'"></app-page-title>
+
+
+            <div class="row pb-5">
+
+                <div class="col-md-8 col-12 mb-3">
+                    <form class="gateway-form" [formGroup]="addDestinationForm" (ngSubmit)="addDestinationAction()">
+                        <div class="card shadow">
+
+                            <div class="card-body">
+                                <!-- Error Alert -->
+                                <div *ngIf="error" class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    {{ errorMessage }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="resetError()"></button>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="DestinationName" class="form-label">Destination Name</label>
+                                    <input type="text" class="form-control form-control-lg" id="DestinationName" formControlName="DestinationName" autocomplete="off">
+
+                                    <small *ngIf="addDestinationForm.controls['DestinationName'].valid && addDestinationForm.controls['DestinationName'].touched" class="text-success">
+                                        <small>Destination Name Set</small>
+                                    </small>
+                                    <small *ngIf="addDestinationForm.controls['DestinationName'].invalid && addDestinationForm.controls['DestinationName'].touched" class="text-danger">
+                                        <small>Please Enter Destination Name</small>
+                                    </small>
+                                    <small *ngIf="addDestinationForm.controls['DestinationName'].untouched" class="text-muted">
+                                        <small>Please Enter Destination Name</small>
+                                    </small>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <div class="col-md-6 col-12">
+                                        <label for="DestinationSlug" class="form-label">Destination Slug</label>
+                                        <input type="text" class="form-control" id="DestinationSlug" formControlName="DestinationSlug" autocomplete="off">
+
+                                        <small *ngIf="addDestinationForm.controls['DestinationSlug'].valid && addDestinationForm.controls['DestinationSlug'].touched" class="text-success">
+                                            <small>Destination Slug Set</small>
+                                        </small>
+                                        <small *ngIf="addDestinationForm.controls['DestinationSlug'].invalid && addDestinationForm.controls['DestinationSlug'].touched" class="text-danger">
+                                            <small>Please Enter Destination Slug</small>
+                                        </small>
+                                        <small *ngIf="addDestinationForm.controls['DestinationSlug'].untouched" class="text-muted">
+                                            <small>Please Enter Destination Slug</small>
+                                        </small>
+                                    </div>
+
+                                    <div class="col-md-6 col-12">
+                                        <label for="StateId" class="form-label">Select State</label>
+                                        <select class="form-select" aria-label="StateId" id="StateId" formControlName="StateId">
+                                            <option [selected]="true">Select State</option>
+                                            <option *ngFor="let state of states" value="{{state.StateId}}">{{state.StateName}}</option>
+                                        </select>
+
+                                        <small *ngIf="addDestinationForm.controls['StateId'].valid && addDestinationForm.controls['StateId'].touched" class="text-success">
+                                            <small>State Selected</small>
+                                        </small>
+                                        <small *ngIf="addDestinationForm.controls['StateId'].invalid && addDestinationForm.controls['StateId'].touched" class="text-danger">
+                                            <small>Select State</small>
+                                        </small>
+                                        <small *ngIf="addDestinationForm.controls['StateId'].untouched" class="text-muted">
+                                            <small>Select State</small>
+                                        </small>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="Hotel" class="form-label">Hotel</label>
+                                    <input type="text" class="form-control" id="Hotel" formControlName="Hotel" autocomplete="off">
+
+                                    <small *ngIf="addDestinationForm.controls['Hotel'].valid && addDestinationForm.controls['Hotel'].touched" class="text-success">
+                                        <small>Hotel Name Set</small>
+                                    </small>
+                                    <small *ngIf="addDestinationForm.controls['Hotel'].invalid && addDestinationForm.controls['Hotel'].touched" class="text-danger">
+                                        <small>Please Enter Hotel Name</small>
+                                    </small>
+                                    <small *ngIf="addDestinationForm.controls['Hotel'].untouched" class="text-muted">
+                                        <small>Please Enter Hotel Name</small>
+                                    </small>
+                                </div>
+
+                            </div>
+                            <div class="card-body bg-light border-top border-bottom">
+                                <div class="row mb-3">
+
+                                    <div class="col-md-6 col-12">
+                                        <div class="mb-2">
+                                            <label class="form-label">Keys</label>
+                                        </div>
+
+                                        <div *ngFor="let Key of keysOptions; let i=index">
+                                            <div class="form-check form-check-inline">
+                                                <input name="destination-keys" class="form-check-input" type="checkbox" [value]="Key.value" [id]="'destination-key-' + Key.value.toLowerCase()" (change)="keySelectAction($event, 'Keys')">
+                                                <label class="form-check-label" [for]="'destination-key-' + Key.value.toLowerCase()">{{ Key.name }}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 col-12">
+                                        <div class="mb-2">
+                                            <label class="form-label">Sightseeing</label>
+                                        </div>
+
+                                        <div *ngFor="let Key of sightseeingOptions; let i=index">
+                                            <div class="form-check form-check-inline">
+                                                <input name="sightseeing-keys" class="form-check-input" type="checkbox" [value]="Key.value" [id]="'sightseeing-key-' + Key.value.toLowerCase()" (change)="keySelectAction($event, 'Keys')">
+                                                <label class="form-check-label" [for]="'sightseeing-key-' + Key.value.toLowerCase()">{{ Key.name }}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="card-body">
+        
+                                <button type="submit" class="btn btn-primary">Add Destination</button>
+                            
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Right Sidebar -->
+                <div class="col-md-4 col-12 mb-3">
+                    <div class="card shadow mb-3">
+                        <div class="card-body">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="enableUpload" checked
+                                (change)="enableDisableImageUploadAction();">
+                                <label class="form-check-label" for="enableUpload">Upload Image</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card shadow mb-3" id="uploadImageCard">
+                        <img class="card-img-top" id="blah" [src]="imageSrc || 'http://placehold.it/1920x1080'" alt="your image" />
+                        <div class="card-body">
+                            <form [formGroup]="imageUploadForm" (ngSubmit)="imageUpload()">
+                                <label for="Image" class="form-label">Package Image</label>
+                                <input class="form-control" type="file" id="Image" formControlName="Image" (change)="onFileChange($event)">
+                                
+                                <small *ngIf="imageUploadForm.controls['Image'].valid && imageUploadForm.controls['Image'].touched" class="text-success">
+                                    <small>Image URL Entered</small>
+                                </small>
+                                <small *ngIf="imageUploadForm.controls['Image'].invalid && imageUploadForm.controls['Image'].touched" class="text-danger">
+                                    <small>Please Enter Image URL</small>
+                                </small>
+                                <small *ngIf="imageUploadForm.controls['Image'].untouched" class="text-muted">
+                                    <small>Please Select Image URL</small>
+                                </small>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="card shadow mb-3" id="uploadUrlCard" style="display: none;">
+                        <div class="card-body">
+                            <form [formGroup]="imageUploadForm">
+                                <label for="Image" class="form-label">Package Image</label>
+                                <input class="form-control" type="text" id="ImageUrl" formControlName="Image">
+                                
+                                <small *ngIf="imageUploadForm.controls['Image'].valid && imageUploadForm.controls['Image'].touched" class="text-success">
+                                    <small>Image Selected</small>
+                                </small>
+                                <small *ngIf="imageUploadForm.controls['Image'].invalid && imageUploadForm.controls['Image'].touched" class="text-danger">
+                                    <small>Please Enter Image</small>
+                                </small>
+                                <small *ngIf="imageUploadForm.controls['Image'].untouched" class="text-muted">
+                                    <small>Please Select Image</small>
+                                </small>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

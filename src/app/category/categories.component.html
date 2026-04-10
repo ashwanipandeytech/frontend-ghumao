@@ -1,0 +1,96 @@
+<ng-container *ngIf="CategoryData!=''">
+
+    <!-- Inner Banner html start-->
+    <section class="inner-banner-wrap1">
+
+
+        <div class="inner-baner-container" *ngIf="CategoryData.imageSrc!=''" [ngStyle]="{'background-image': 'url(&quot;' + CategoryData['imageSrc'] + '&quot;)'}">
+            <div class="container">
+                <div class="inner-banner-content mt-4 package-name">
+                    <h3 class="inner-title">{{CategoryData.CategoryName}}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="inner-shape">
+
+
+        </div>
+    </section>
+
+    <div class="col-lg-12">
+
+        <section class="package-section">
+            <div class="container">
+                <div class="section-heading text-center">
+                    <div class="row">
+                        <div class="col-lg-8 offset-lg-2">
+                            <h5 class="dash-style">{{CategoryData.CategoryTitle}}</h5>
+                            <p class="title">{{CategoryData.Description}}</p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="package-inner">
+                    <div class="row">
+
+                        <div class="col-lg-4 col-md-6 col-sm-4 slide " *ngFor="let item of CategoryData.Packages;">
+                            <div class="package-wrap ">
+                                <figure class="feature-image ">
+                                    <a href="package/{{item['PackageSlug']}}">
+                                        <img src="{{item.SliderImageSrc}} " alt=" ">
+                                    </a>
+                                </figure>
+                                <!-- <div class="package-price ">
+                    <h6>
+                        <span>$1,900 </span> / per person
+                    </h6>
+                </div> -->
+                                <div class="package-content-wrap ">
+                                    <div class="package-meta text-center ">
+                                        <ul>
+                                            <li *ngIf="item.NoOfDays!=''">
+                                                <i class="far fa-clock"></i> {{item.NoOfDays-1}}N/{{item.NoOfDays}}D
+                                            </li>
+                                            <li *ngIf="item.Code!=''">
+                                                <i class="fas fa-user-friends"></i> {{item.Code}}
+                                            </li>
+                                            <li *ngIf="item.PackageName!=''">
+                                                <i class="fas fa-map-marked-alt"></i> {{item.PackageName}}
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="package-content ">
+                                        <h3>
+                                            <a href="package/{{item['PackageSlug']}}">{{item.PackageName}}</a>
+                                        </h3>
+                                        <div class="review-area ">
+                                            <span class="review-text ">({{item.reviewCount}} reviews)</span>
+                                            <div class="rating-start " title="Rated 5 out of 5 ">
+                                                <span style="width: 80% " *ngIf="!item.stars"></span>
+                                                <span style="width: 100% " *ngIf="item.stars"></span>
+                                            </div>
+                                        </div>
+                                        <div class="innercontent ">
+                                            <p *ngIf="item.ShortDescription">{{item.ShortDescription}}</p>
+                                        </div>
+                                        <div class="btn-wrap ">
+                                            <a (click)="utilityservice.scrollToComponent('inquiryformsection')" class="button-text width-6 cursor-pointer">Enquire Now<i class="fas fa-arrow-right "></i></a>
+                                            <a href="package/{{item['PackageSlug']}}" class="button-text width-6 ">Know More </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </section>
+
+
+
+
+    </div>
+
+</ng-container>

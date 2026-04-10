@@ -1,0 +1,108 @@
+<div class="modal-content p-3 br-0 email-verify">
+    <div class="modal-header px-0 pt-0 pb-3 bg-transparent">
+        <h3 class="modal-title text-left">ENQUIRY FORM</h3>
+
+
+        <a type="button" class="border-0 bg-transparent ml-auto" data-dismiss="modal" (click)="utilitiservice.close()">
+            <b>  X </b>
+        </a>
+    </div>
+    <div class="modal-body text-left px-0 pt-3 pb-0">
+
+        <div class="container">
+            <form #inquiryform="ngForm" name="form" (ngSubmit)="inquiryform.form.valid && submitinquiryform(inquiryform)" novalidate>
+                <div class="trip-search-inner white-bg row">
+                    <div class="col-md-12">
+                        <div class="row">
+
+
+
+
+                            <div class=" col-md-12 mb-2">
+
+                                <input type="text" name="fullName" class="form-control" #fullName="ngModel" required [(ngModel)]="inquiryData.fullName" placeholder="Enter Name*">
+                                <div class="error-msg" *ngIf="fullName.touched">
+                                    <span class="text-danger" *ngIf="fullName.errors?.required">
+                               Name is Required
+                               </span>
+                                </div>
+                            </div>
+                            <div class=" col-md-12  mb-2">
+
+                                <input type="text" name="phone" class="form-control" [(ngModel)]="inquiryData.phone" #phone="ngModel" required placeholder=" Phone Number*">
+                                <div class="error-msg" *ngIf="phone.touched">
+                                    <span class="text-danger" *ngIf="phone.errors?.required">
+                                  Phone Number is Required
+                                 </span>
+                                </div>
+                            </div>
+                            <div class=" col-md-12  mb-2">
+
+                                <input class="input-date-picker" class="form-control" type="text" name="email" [(ngModel)]="inquiryData.email" #email="ngModel" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$" placeholder="Email Id" autocomplete="off">
+                                <div class="error-msg" *ngIf="email.dirty || email.touched">
+                                    <span class="text-danger" *ngIf="email.invalid && email.errors.pattern">
+                                  Invalid Email
+                                </span>
+                                </div>
+                            </div>
+
+                            <div class=" col-md-12  mb-2">
+
+                                <input type="text" name="destination" class="form-control" required [(ngModel)]="inquiryData.destination" #destination="ngModel" placeholder="Destination travelling*">
+
+                                <div class="error-msg" *ngIf="destination.touched">
+                                    <span class="text-danger" *ngIf="destination.errors?.required">
+                                Destination is Required
+                             </span>
+                                </div>
+
+                            </div>
+
+                            <div class=" col-md-12  mb-2">
+
+                                <input type="text" name="noOfTravellers" class="form-control" [(ngModel)]="inquiryData.noOfTravellers" #noOfTravellers="ngModel" placeholder="Number Of Travelers" autocomplete="off">
+
+                            </div>
+                            <!-- <div class=" col-md-12  mb-2">
+
+                                <input class="input-date-picker" type="text" class="form-control" name="travellingMonth" [(ngModel)]="inquiryData.travellingMonth" #travellingMonth="ngModel" placeholder="Travelling Month" autocomplete="off">
+                            </div> -->
+
+                            <div class=" col-md-12 mb-2">
+
+                                <div class="positiion-relative">
+                                    <input class="input-date-picker form-control" [minDate]="minDate" #dp="bsDatepicker" bsDatepicker [bsConfig]="{ showWeekNumbers:false,dateInputFormat: 'DD/MM/YYYY',adaptivePosition: true }" placeholder="Travelling Month" readonly type="text" name="travellingMonth"
+                                        [(ngModel)]="inquiryData.travellingMonth" #travellingMonth="ngModel" autocomplete="off">
+                                    <i class="fa fa-calendar icon calandar-class" (click)="dp.toggle()"></i>
+
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <button class="btn btn-danger btn-md   mr-2" (click)="utilitiservice.close();">CANCEL</button>
+
+
+
+                            <button class="btn btn-primary btn-md"> ENQUIRE NOW</button>
+                        </div>
+
+
+
+
+                    </div>
+
+
+                </div>
+            </form>
+        </div>
+
+
+
+
+
+    </div>
+</div>

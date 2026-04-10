@@ -1,0 +1,186 @@
+<div class="sidebar-container">
+    <app-sidenav></app-sidenav>
+
+    <div class="right-content min-vh-100">
+        <div class="container-fluid">
+            <app-page-title [title]="'View Enquiry'" [icon]="'fa-arrow-alt-circle-left'"
+                            [button]="'Return Back To All Enquiries'" [url]="'/admin/enquiry'"></app-page-title>
+
+            <div class="row pb-5">
+
+                <div class="col-12">
+                    <div class="card shadow">
+                        <div class="card-body">
+
+                            <div class="col-sm-12">
+                                <span class="btn btn-lg float-end {{(enquiry['Mark']==undefined)?'btn-default':'btn-info'}} text-white">{{enquiry['Mark']}}</span>
+                            </div>
+
+                            <form [formGroup]="assignEnquiryForm" (ngSubmit)="assignEnquiryAction()">
+                                <!-- Error Alert -->
+                                <div *ngIf="error" class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    {{ errorMessage }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"
+                                            (click)="resetError()"></button>
+                                </div>
+
+                                <table *ngIf="enquiry" class="table">
+                                    <thead>
+                                    <th>Field</th>
+                                    <th>Value</th>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>PersonName</td>
+                                        <td>{{ enquiry['PersonName'] }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>EmailId</td>
+                                        <td>{{ enquiry['EmailId'] }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>MobileNo</td>
+                                        <td>{{ enquiry['MobileNo'] }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Departure Location</td>
+                                        <td>{{ enquiry['Departure'] }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Destination</td>
+                                        <td>{{ enquiry['Destination'] }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Number Of Person</td>
+                                        <td>{{ enquiry['Noper'] }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Message</td>
+                                        <td>{{ enquiry['Message'] }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Enquiry Source</td>
+                                        <td>{{ enquiry['Source'] }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>AssignedUser</td>
+                                        <td>{{ enquiry['AssignedUser'] }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>AssignedDate</td>
+                                        <td>{{ enquiry['AssignedDate'] | date:'dd MMM yyyy hh:mm:ss aa' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>FollowUp Date</td>
+                                        <td>{{ enquiry['FollowUpDate'] | date:'dd MMM yyyy hh:mm:ss aa' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Enquiry Marking Reason</td>
+                                        <td>{{ enquiry['MarkReason']}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Additional Notes</td>
+                                        <td>{{ enquiry['Notes']}}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+
+                                <div class="row" *ngIf="_isAdmin || _isSubAdmin">
+                                    <div class="col-12 py-5">
+                                        <label for="userID" class="form-label">Select User</label>
+                                        <select *ngIf="enquiry" class="form-select" aria-label="userID" id="userID"
+                                                formControlName="AssignedUser" [(ngModel)]="userIDDefaultValue">
+                                            <option [selected]="enquiry['AssignedUser'] === 0" value="0">Select User
+                                            </option>
+                                            <option *ngFor="let user of users" value="{{user['UserId']}}"
+                                                    [selected]="enquiry['AssignedUser'] === user['UserId']">
+                                                {{user['Name']}}
+                                            </option>
+                                        </select>
+
+                                        <small *ngIf="assignEnquiryForm.controls['AssignedUser'].valid && assignEnquiryForm.controls['AssignedUser'].touched"
+                                               class="text-success">
+                                            <small>User Selected</small>
+                                        </small>
+                                        <small *ngIf="assignEnquiryForm.controls['AssignedUser'].invalid && assignEnquiryForm.controls['AssignedUser'].touched"
+                                               class="text-danger">
+                                            <small>Select User</small>
+                                        </small>
+                                        <small *ngIf="assignEnquiryForm.controls['AssignedUser'].untouched"
+                                               class="text-muted">
+                                            <small>Select User</small>
+                                        </small>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label class="form-label"> </label>
+                                        <button type="submit" class="btn btn-primary">Assign Enquiry</button>
+                                    </div>
+                                </div>
+                            </form>
+
+
+                            <div class="row" *ngIf="_isUser">
+                                <div class="col-6 py-5">
+                                    <form [formGroup]="MarkFormEdit" (ngSubmit)="MarkFormEditAction()">
+                                        <label for="userID" class="form-label">Mark Enquiry</label>
+                                        <select *ngIf="enquiry" class="form-select" aria-label="Mark" id="Mark"
+                                                formControlName="Mark" [(ngModel)]="Mark">
+                                            <option value="spam" [selected]="enquiry['Mark'] == 'spam'">Spam</option>
+                                            <option value="Not-Interested"
+                                                    [selected]="enquiry['Mark'] == 'Not-Interested'">Not-Interested
+                                            </option>
+                                            <option value="Follow-Up" [selected]="enquiry['Mark'] == 'Follow-Up'">
+                                                Follow-Up
+                                            </option>
+                                            <option value="Deal-Closed"
+                                                    [selected]="enquiry['Mark'] == 'Deal-Closed'">Deal-Closed
+                                            </option>
+                                        </select>
+
+                                        <label for="MarkReason" class="form-label">Marking Reason</label>
+                                        <input type="text" class="form-control" id="MarkReason"
+                                               formControlName="MarkReason" [(ngModel)]="MarkReason" placeholder="Reason For Marking">
+
+                                        <div class="mt-2">
+                                            <button type="submit" class="btn btn-primary">Mark Enquiry</button>
+                                        </div>
+                                    </form>
+                                </div>
+
+
+                                <div class="col-6 py-5">
+                                    <form [formGroup]="FollowupEdit" (ngSubmit)="FollowupAction()">
+                                        <label for="FollowUpDate" class="form-label">FollowUp Date</label>
+                                        <input type="date" class="form-control" id="FollowUpDate"
+                                               formControlName="FollowUpDate" [(ngModel)]="FollowUpDate" placeholder="dd-mm-yyyy">
+                                        <div class="mt-2">
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                        </div>
+                                    </form>
+                                </div>
+
+
+                                <div class="col-12 py-2">
+                                    <form [formGroup]="AdditionalNote" (ngSubmit)="AdditionalNoteAction()">
+                                        <label for="MarkReason" class="form-label">Additional Notes</label>
+                                        <textarea class="form-control" id="Notes" formControlName="Notes" [(ngModel)]="Notes" placeholder="Additional Notes"></textarea>
+
+                                        <div class="mt-2">
+                                            <button type="submit" class="btn btn-primary">Add Note</button>
+                                        </div>
+                                    </form>
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,240 @@
+<div class="sidebar">
+    <div class="package-price">
+        <!-- <h5 class="price">
+            <span>$649</span> / per person
+        </h5>
+        <div class="start-wrap">
+            <div class="rating-start" title="Rated 5 out of 5">
+                <span style="width: 60%"></span>
+            </div>
+        </div> -->
+    </div>
+    <div class="widget-bg booking-form-wrap">
+        <h4 class="bg-title">Booking</h4>
+        <form #inquiryform="ngForm" class="booking-form" name="form" (ngSubmit)="inquiryform.form.valid && submitinquiryform(inquiryform)" novalidate>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group ">
+                        <input type="text" name="fullName" #fullName="ngModel" required [(ngModel)]="inquiryData.fullName" placeholder="Enter Name* ">
+                        <div class="error-msg" *ngIf="fullName.touched">
+                            <span class="text-danger" *ngIf="fullName.errors?.required">
+                     Name is Required
+                     </span>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group ">
+
+                        <input type="text" name="phone" [(ngModel)]="inquiryData.phone" #phone="ngModel" required placeholder=" Phone Number* ">
+                        <div class="error-msg" *ngIf="phone.touched">
+                            <span class="text-danger" *ngIf="phone.errors?.required">
+                        Phone Number is Required
+                       </span>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group ">
+
+                        <input class="input-date-picker" type="text" name="email" [(ngModel)]="inquiryData.email" #email="ngModel" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$" placeholder="Email Id" autocomplete="off">
+                        <div class="error-msg" *ngIf="email.dirty || email.touched">
+                            <span class="text-danger" *ngIf="email.invalid && email.errors.pattern">
+                        Invalid Email
+                      </span>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="col-md-12">
+                    <div class="form-group ">
+
+                        <input type="text" name="destination" required [(ngModel)]="inquiryData.destination" #destination="ngModel" placeholder="Destination* " autocomplete="off">
+
+                        <div class="error-msg" *ngIf="destination.touched">
+                            <span class="text-danger" *ngIf="destination.errors?.required">
+                      Destination is Required
+                   </span>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="col-md-12">
+                    <div class="form-group ">
+                        <input type="text" name="noOfTravellers" [(ngModel)]="inquiryData.noOfTravellers" #noOfTravellers="ngModel" placeholder="Number Of Travelers" autocomplete="off">
+
+                    </div>
+
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group ">
+
+                        <!-- <input class="input-date-picker" type="text" name="travellingMonth" [(ngModel)]="inquiryData.travellingMonth" #travellingMonth="ngModel" placeholder="Travelling Month" autocomplete="off"> -->
+
+                        <i class="fa fa-calendar icon calandar-class" (click)="dp.toggle()"></i>
+                        <input class="input-date-picker" [minDate]="minDate" #dp="bsDatepicker" bsDatepicker placeholder="Travelling Month" [bsConfig]="{ showWeekNumbers:false,dateInputFormat: 'DD/MM/YYYY' }" readonly type="text" name="travellingMonth" [(ngModel)]="inquiryData.travellingMonth"
+                            #travellingMonth="ngModel" autocomplete="off">
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- <div class="col-sm-12">
+                    <h4 class="">Add Options</h4>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="checkbox-list">
+                   <input type="checkbox" name="s">
+                   <span class="custom-checkbox"></span>
+                   Tour guide
+                </label>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="checkbox-list">
+                   <input type="checkbox" name="s">
+                   <span class="custom-checkbox"></span>
+                   Insurance
+                </label>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="checkbox-list">
+                   <input type="checkbox" name="s">
+                   <span class="custom-checkbox"></span>
+                   Dinner
+                </label>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="checkbox-list">
+                   <input type="checkbox" name="s">
+                   <span class="custom-checkbox"></span>
+                   Bike rent
+                </label>
+                    </div>
+                </div> -->
+                <div class="col-sm-12">
+                    <div class="form-group submit-btn">
+                        <input type="submit" name="submit" value="Enquire Now">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="widget-bg information-content text-left">
+        <h5>Why Ghumao.in?</h5>
+        <div class="text-left">
+            <ul class="list-unstyled ul-margin">
+                <li class="p-2">
+                    <i class="fas fa-thumbs-up mr-1"></i> Trusted by 10000+ customers
+                </li>
+                <li class="p-2">
+                    <i class="fas fa-thumbs-up mr-1"></i> Tailor-made packages
+                </li>
+                <li class="p-2">
+                    <i class="fas fa-thumbs-up mr-1"></i> Hassle-Free Experience
+                </li>
+                <li class="p-2">
+                    <i class="fas fa-thumbs-up mr-1"></i> 1000+ Tour & Activities
+                </li>
+                <li class="p-2">
+                    <i class="fas fa-thumbs-up mr-1"></i> Best Rates and Savings
+                </li>
+
+                <li class="p-2">
+                    <i class="fas fa-thumbs-up mr-1"></i> 24x7 Support
+                </li>
+
+
+
+
+            </ul>
+        </div>
+
+    </div>
+
+
+    <div class="widget-bg information-content text-left">
+        <h5>Want to Get your customised tour package?</h5>
+
+        <p>We would be happy to help you with your travel package according to your needs. </p>
+
+        <ul class="list-unstyled text-left ul-margin">
+            <li>
+                <a href="tel:+91-9818306992"><i  class="fas fa-phone-alt"></i> +91-9818306992 </a>
+
+            </li>
+            <li class="mt-2">
+                <a href="email:enquiry@ghumao.in"><i class="fas fa-envelope"></i><span class="__cf_email__"> enquiry@ghumao.in</span></a>
+            </li>
+
+        </ul>
+
+
+
+
+
+    </div>
+    <div class="morepackage">
+
+        <h5>MORE PACKAGES</h5>
+        <div class="travel-package-content text-center">
+
+            <ul>
+                <li>
+                    <a href="javascript:void(0)" class="tour-heading">India Tour Packages</a>
+                    <ul>
+                        <li> <a href="category/kashmir-packages"><i class="far fa-arrow-alt-circle-right"></i>Kashmir Tour Package</a></li>
+                        <li> <a href="category/himachal-packages"><i class="far fa-arrow-alt-circle-right"></i>Himachal Tour Package</a> </li>
+                        <li> <a href="category/kerala-package"><i class="far fa-arrow-alt-circle-right"></i>Kerala Tour Package</a></li>
+                        <li> <a href="category/gujarat-package"><i class="far fa-arrow-alt-circle-right"></i>Gujarat Tour Package</a></li>
+                        <li> <a href="category/northeast-package"><i class="far fa-arrow-alt-circle-right"></i>North East Tour Package</a></li>
+                        <li><a href="category/karnataka-package"><i class="far fa-arrow-alt-circle-right"></i>Karnataka Tour Package</a> </li>
+                    </ul>
+
+                </li>
+
+            </ul>
+        </div>
+        <div class="custom-horizontal mt-4"> </div>
+
+
+        <div class="travel-package-content text-center mt-4">
+
+            <ul>
+
+                <li>
+                    <a href="javascript:void(0)" class="tour-heading">International Tour packages</a>
+
+                    <ul>
+                        <li> <a href="category/europe"><i class="far fa-arrow-alt-circle-right"></i>Europe Tour Package</a></li>
+                        <li> <a href="category/indonesia"><i class="far fa-arrow-alt-circle-right"></i>Bali Tour Package</a> </li>
+                        <li> <a href="category/uae"><i class="far fa-arrow-alt-circle-right"></i>UAE Tour Package</a></li>
+                        <li> <a href="category/malaysia"><i class="far fa-arrow-alt-circle-right"></i>Malaysia Tour Package</a></li>
+                        <li> <a href="category/australia"><i class="far fa-arrow-alt-circle-right"></i>Australia East Tour Package</a></li>
+                        <li><a href="category/thailand"><i class="far fa-arrow-alt-circle-right"></i>Thailand Tour Package</a> </li>
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+
+    </div>
+
+
+
+</div>

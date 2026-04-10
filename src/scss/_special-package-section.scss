@@ -1,0 +1,117 @@
+.special-package-section{
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    .back-filter{
+        background: rgba(0,0,0,0.6);
+    }
+}
+
+.special-category-carousal{
+
+    .deals-item{
+        position: relative;
+        background: transparent;
+        z-index: 1;
+
+        .deals-item-outer{
+            position: relative;
+            z-index: 5;
+            padding: 10px;
+            background: #fff;
+
+            .deals-image{
+                position: relative;
+                overflow: hidden;
+
+                .responsive-image-placeholder {
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        height: 100%;
+                        width: 100%;
+                        top: 0;
+                        left: 0;
+                        background-image: linear-gradient(to bottom right, #ff00001c, #ffff0047);
+                        opacity: 0;
+                        transition: all ease 0.3s;
+                    }
+                }
+            }
+
+            .deal-price{
+                background: #fb8b01;
+                font-size: 20px;
+                line-height: 25px;
+                font-weight: 600;
+                color: #fff;
+                position: absolute;
+                bottom: -75px;
+                right: 0px;
+                left: 0;
+                margin: 0 auto;
+                height: 150px;
+                width: 150px;
+                text-align: center;
+                border-radius: 50%;
+                padding: 16px;
+                box-shadow: 1px 1px 5px #00000057;
+                z-index: 1;
+            }
+
+            .deal-content{
+                text-align: center;
+                padding: 25px 0;
+            }
+            .deal-rating{
+                margin-bottom: 15px;
+
+                span {
+                    color: #ffc63f;
+                    font-size: 16px;
+                }
+            }
+        }
+
+        &:before{
+            position: absolute;
+            height: 97%;
+            width: 50%;
+            content: '';
+            background: #fff;
+            top: 15px;
+            left: 5px;
+            z-index: -1;
+            transform: rotate(-5deg);
+        }
+        &:after{
+            position: absolute;
+            height: 50%;
+            width: 90%;
+            content: '';
+            background: #fff;
+            top: 0;
+            right: 0;
+            z-index: -1;
+            transform: rotate(5deg);
+        }
+    }
+
+    
+    .deals-item{
+        &:hover {
+            .deals-item-outer{
+                .deals-image {
+                    .responsive-image-placeholder {
+                        &::after {
+                            background-image: linear-gradient(to bottom right, #ff00001c, #ffff0047);
+                            opacity: 1;
+                            transition: all ease 0.3s;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

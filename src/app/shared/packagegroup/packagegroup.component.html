@@ -1,0 +1,37 @@
+<ngx-slick-carousel class="row package-slider carousel" #slickModal="slick-carousel" [config]="slideConfig" (init)="slickInit($event)" (breakpoint)="breakpoint($event)">
+
+    <div ngxSlickItem class="col-md-3 slide " *ngFor="let item of PackageGroup;">
+        <div class="package-wrap ">
+            <div class="feature-image ">
+
+                <div class="box">
+                    <img src="{{item.Image}} " alt=" ">
+                    <div class="overlay1">
+                        <div class="wrapper">
+                            <h4 class="box-title" style="color:white">{{item.moduleCode}} <br><small style="color:white" class="smalltext">({{item.ImageType}} Tours)</small></h4>
+                            <a href="category/{{item['moduleId']}}" class="btn btn-white" tabindex="0">See More</a>
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+
+
+
+
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+</ngx-slick-carousel>

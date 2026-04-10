@@ -1,0 +1,41 @@
+.search-box-card {
+    display: block;
+    padding: 0;
+    position: relative;
+
+    .search-outer {
+        background: #fff;
+        position: relative;
+        top: -80px;
+        z-index: 9;
+        box-shadow: 0px 0px 40px #57575757;
+
+        .into-section{
+            background: #005294;
+            position: relative;
+            padding: 33px 0;
+
+            p {
+                font-size: 20px;
+                color: #fff;
+                margin-bottom: 0;
+
+                span {
+                    display: block;
+                    font-size: 40px;
+                    font-weight: 600;
+                }
+            }
+
+            i {
+                position: absolute;
+                top: 10px;
+                right: 30px;
+            }
+        }
+
+        .table_item {
+            position: relative;
+        }
+    }
+}

@@ -1,0 +1,64 @@
+.itinerary-timeline-wrap .day-count {
+    top: 47px;
+}
+
+.custom-color-red {
+    background-color: #F56960;
+}
+
+.itinerary-timeline-wrap ul li {
+    margin-bottom: 0px !important;
+}
+
+.sidebar .widget-bg {
+    margin-bottom: 5px;
+}
+
+.timeline-content p,
+.overview-content ul li,
+.information-content p,
+.information-content ul li,
+.travel-package-content ul li a {
+    font-size: 13px !important;
+}
+
+.sidebar .travel-package-content ul li {
+    margin-bottom: 0px !important;
+    border-bottom: unset !important;
+}
+
+.nav-tabs .nav-link {
+    padding: 12px 25px !important;
+    font-size: 11px !important;
+}
+
+.package-name {
+    top: 106px
+}
+
+.sidebar .morepackage h5 {
+    color: #F56960;
+    font-size: 15px;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 22px;
+    display: inline-block;
+    text-transform: uppercase;
+    padding-left: 30px;
+    margin-top: 28px;
+    position: relative;
+}
+
+.sidebar .morepackage h5::after {
+    background-color: #F56960;
+    content: "";
+    height: 2px;
+    width: 50px;
+    margin-left: 10px;
+    position: absolute;
+    top: 50%;
+}
+
+.tour-heading {
+    color: #ffcd58 !important;
+}

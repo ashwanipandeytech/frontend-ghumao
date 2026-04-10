@@ -1,0 +1,43 @@
+.serp-card{
+    height: 150px;
+    border-bottom: 2px solid rgba(0,0,0,0.1);
+
+    &:last-child{
+        border-bottom: none;
+    }
+    img{    
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        padding: 20px 20px 20px 0px;
+        border-radius: 10px;
+        max-height: 200px;
+        max-width: 800px;
+    }
+    .title-div, .ext-div{
+        border-top: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+        padding-top: 4px;
+    }
+    .days-div{
+        border-top: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+        border-left: 1px solid #ccc;
+        text-align: center;
+        padding: 5px;
+        font-weight: bold;
+    }
+    .td-price{
+        width: 150px;
+        padding-left: 30px;
+    }
+    .l-r-brdr {
+        border-right: 1px solid #ccc;
+        border-left: 1px solid #ccc;
+        text-align: center;
+        padding: 10px;
+    }
+    .r-brdr {
+        border-right: 1px solid #ccc;
+    }
+}

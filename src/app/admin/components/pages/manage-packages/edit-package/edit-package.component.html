@@ -1,0 +1,684 @@
+<link>
+<div class="sidebar-container">
+    <app-sidenav></app-sidenav>
+
+    <div class="right-content min-vh-100">
+        <div class="container-fluid">
+            <app-page-title [title]="'Edit Package'" [icon]="'fa-arrow-alt-circle-left'" [button]="'Return Back To All Packages'" [url]="'/admin/packages'"></app-page-title>
+
+            <div class="row pb-5">
+
+                <div class="col-md-12 col-12 mb-3">
+
+                    <div class="col-md-12 col-12 mb-3">
+                        <div class="card shadow mb-3">
+                            <div class="card-body">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="enableUpload" checked (change)="enableDisableImageUploadAction();">
+                                    <label class="form-check-label" for="enableUpload">Upload Image</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row  mb-2" *ngIf="uploadImage">
+                            <div class="col-md-4">
+
+                                <div class="card shadow mb-3" id="uploadImageCard">
+                                    <img class="card-img-top" id="blah" [src]="imageSrc || '/assets/images/placeholder.jpg'" onerror="this.onerror=null;this.src='/assets/images/placeholder.jpg'" alt=" image" />
+                                    <div class="card-body">
+                                        <form [formGroup]="imageUploadForm" (ngSubmit)="imageUpload()">
+                                            <label for="Image" class="form-label">Package Banner Image</label>
+                                            <input class="form-control" type="file" id="Image" formControlName="Image" (change)="onFileChange($event,'homeBanner')">
+
+                                            <small *ngIf="imageUploadForm.controls['Image'].valid && imageUploadForm.controls['Image'].touched" class="text-success">
+                                        <small>Image URL Entered</small>
+                                            </small>
+                                            <small *ngIf="imageUploadForm.controls['Image'].invalid && imageUploadForm.controls['Image'].touched" class="text-danger">
+                                        <small>Please Enter Image URL</small>
+                                            </small>
+                                            <small *ngIf="imageUploadForm.controls['Image'].untouched" class="text-muted">
+                                        <small>Please Select Image URL</small>
+                                            </small>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="card shadow mb-3" id="uploadUrlCard" style="display: none;">
+                                    <div class="card-body">
+                                        <form [formGroup]="imageUploadForm">
+                                            <label for="Image" class="form-label">Package Banner Image</label>
+                                            <input class="form-control" type="text" id="ImageUrl" formControlName="Image">
+
+                                            <small *ngIf="imageUploadForm.controls['Image'].valid && imageUploadForm.controls['Image'].touched" class="text-success">
+                                        <small>Image Selected</small>
+                                            </small>
+                                            <small *ngIf="imageUploadForm.controls['Image'].invalid && imageUploadForm.controls['Image'].touched" class="text-danger">
+                                        <small>Please Enter Image</small>
+                                            </small>
+                                            <small *ngIf="imageUploadForm.controls['Image'].untouched" class="text-muted">
+                                        <small>Please Select Image</small>
+                                            </small>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-4">
+
+                                <div class="card shadow mb-3" id="uploadImageCard">
+                                    <img class="card-img-top" id="blah" [src]="imageInnerSrc  || '/assets/images/placeholder.jpg'" onerror="this.onerror=null;this.src='/assets/images/placeholder.jpg'" alt=" image" />
+                                    <div class="card-body">
+                                        <form [formGroup]="imageUploadForm" (ngSubmit)="imageUpload()">
+                                            <label for="Image" class="form-label">Package Inner Image</label>
+                                            <input class="form-control" type="file" id="Image" formControlName="Image" (change)="onFileChange($event,'InnerImage')">
+
+                                            <small *ngIf="imageUploadForm.controls['Image'].valid && imageUploadForm.controls['Image'].touched" class="text-success">
+                                        <small>Image URL Entered</small>
+                                            </small>
+                                            <small *ngIf="imageUploadForm.controls['Image'].invalid && imageUploadForm.controls['Image'].touched" class="text-danger">
+                                        <small>Please Enter Image URL</small>
+                                            </small>
+                                            <small *ngIf="imageUploadForm.controls['Image'].untouched" class="text-muted">
+                                        <small>Please Select Image URL</small>
+                                            </small>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="card shadow mb-3" id="uploadUrlCard" style="display: none;">
+                                    <div class="card-body">
+                                        <form [formGroup]="imageUploadInnerForm">
+                                            <label for="Image" class="form-label">Package Inner Image</label>
+                                            <input class="form-control" type="text" id="InnerImageUrl" formControlName="InnerImage">
+
+                                            <small *ngIf="imageUploadInnerForm.controls['InnerImage'].valid && imageUploadInnerForm.controls['InnerImage'].touched" class="text-success">
+                                        <small>Image Selected</small>
+                                            </small>
+                                            <small *ngIf="imageUploadInnerForm.controls['InnerImage'].invalid && imageUploadInnerForm.controls['InnerImage'].touched" class="text-danger">
+                                        <small>Please Enter Image</small>
+                                            </small>
+                                            <small *ngIf="imageUploadInnerForm.controls['InnerImage'].untouched" class="text-muted">
+                                        <small>Please Select Image</small>
+                                            </small>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="card shadow mb-3" id="uploadImageCard">
+                                    <img class="card-img-top" id="blah" [src]="imageSliderImageSrc  || '/assets/images/placeholder.jpg'" onerror="this.onerror=null;this.src='/assets/images/placeholder.jpg'" alt=" image" />
+                                    <div class="card-body">
+                                        <form [formGroup]="imageUploadSliderForm" (ngSubmit)="imageUpload()">
+                                            <label for="SliderImage" class="form-label">Compact Image</label>
+                                            <input class="form-control" type="file" id="SliderImage" formControlName="SliderImage" (change)="onFileChange($event,'SliderImage')">
+
+                                            <small *ngIf="imageUploadSliderForm.controls['SliderImage'].valid && imageUploadSliderForm.controls['SliderImage'].touched" class="text-success">
+                            <small>Image URL Entered</small>
+                                            </small>
+                                            <small *ngIf="imageUploadSliderForm.controls['SliderImage'].invalid && imageUploadSliderForm.controls['SliderImage'].touched" class="text-danger">
+                            <small>Please Enter Image URL</small>
+                                            </small>
+                                            <small *ngIf="imageUploadSliderForm.controls['SliderImage'].untouched" class="text-muted">
+                            <small>Please Select Image URL</small>
+                                            </small>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+                        <label for="Slider Images" class="form-label  " *ngIf="uploadImage">Slider Images</label> <span *ngIf="uploadImage" class="ml-3 btn btn-sm btn-info" (click)="addMore('PakageImages');"> Add More</span>
+
+                        <div class="row mt-2" *ngIf="uploadImage">
+
+
+
+                            <div class="col-md-3" *ngFor="let item of packageData.PakageImages;let i=index">
+                                <div class="card shadow mb-3" id="uploadImageCard">
+                                    <img class="card-img-top" id="blah" [src]="item.Image" onerror="this.onerror=null;this.src='/assets/images/placeholder.jpg'" alt=" image" />
+                                    <div class="card-body">
+
+                                        <label for="SliderImage1" class="form-label"> Slider Image {{i+1}}</label>
+                                        <input class="form-control" type="file" id="SliderImage1" (change)="onFileSliderChange($event,i)">
+
+                                        <!-- <small *ngIf="imageUploadSliderForm.controls['SliderImage1'].valid && imageUploadSliderForm.controls['SliderImage1'].touched" class="text-success">
+                          <small>Image URL Entered</small>
+                                        </small>
+                                        <small *ngIf="imageUploadSliderForm.controls['SliderImage1'].invalid && imageUploadSliderForm.controls['SliderImage1'].touched" class="text-danger">
+                          <small>Please Enter Image URL</small>
+                                        </small>
+                                        <small *ngIf="imageUploadSliderForm.controls['SliderImage1'].untouched" class="text-muted">
+                          <small>Please Select Image URL</small>
+                                        </small> -->
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+
+
+                    </div>
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <!-- <pre>{{packageData |json}}</pre> -->
+                            <form (ngSubmit)="editPackageAction()">
+                                <!-- Error Alert -->
+
+
+                                <div class="row mb-3">
+
+
+                                    <div class="col-md-6 col-12">
+                                        <label for="Code" class="form-label">Package Code</label>
+                                        <input type="text" class="form-control form-control-lg" id="Code" required name="Code" [(ngModel)]="packageData['Code']" #Code="ngModel" [ngModelOptions]="{standalone: true}" autocomplete="off">
+
+                                        <small *ngIf="Code.touched && !Code.errors?.required" class="text-success">
+                                          <small>Code Set</small>
+                                        </small>
+                                        <small *ngIf="Code.touched && Code.errors?.required" class="text-danger">
+                                          <small>Please Enter Package Code</small>
+                                        </small>
+                                        <small *ngIf="Code.untouched" class="text-muted">
+                                          <small>Please Enter Package Code</small>
+                                        </small>
+                                    </div>
+
+
+
+
+                                    <div class="col-md-6 col-12">
+
+                                        <label for="PackageName" class="form-label">Package Name</label>
+                                        <input type="text" class="form-control form-control-lg" id="Title" required name="PackageName" [(ngModel)]="packageData['PackageName']" #PackageName="ngModel" [ngModelOptions]="{standalone: true}" autocomplete="off">
+
+                                        <small *ngIf="PackageName.touched && !PackageName.errors?.required" class="text-success">
+                                <small>PackageName Set</small>
+                                        </small>
+                                        <small *ngIf="Title.touched && Title.errors?.required" class="text-danger">
+                                <small>Please Enter Package PackageName</small>
+                                        </small>
+                                        <small *ngIf="Title.untouched" class="text-muted">
+                                <small>Please Enter Package PackageName</small>
+                                        </small>
+
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+
+
+                                    <div class="col-md-6 col-12">
+                                        <label for="PackageSlug" class="form-label">Package Slug</label>
+                                        <input type="text" class="form-control" id="PackageSlug" required name="PackageSlug" [(ngModel)]="packageData['PackageSlug']" #PackageSlug="ngModel" [ngModelOptions]="{standalone: true}" autocomplete="off">
+
+                                        <small *ngIf="PackageSlug.touched && !PackageSlug.errors?.required" class="text-success">
+                                      <small>Slug Set</small>
+                                        </small>
+                                        <small *ngIf="PackageSlug.touched && PackageSlug.errors?.required" class="text-danger">
+                                      <small>Please Enter Package Slug</small>
+                                        </small>
+                                        <small *ngIf="PackageSlug.untouched" class="text-muted">
+                                      <small>Please Enter Package Slug</small>
+                                        </small>
+
+                                        <div class="row mt-2 ml-2">
+                                            <a href="package/{{packageData['PackageSlug']}}" target="_blank"> See Package</a>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 col-12">
+                                        <label for="Title" class="form-label">Package Title</label>
+                                        <input type="text" class="form-control form-control-lg" id="Title" required name="Title" [(ngModel)]="packageData['Title']" #Title="ngModel" [ngModelOptions]="{standalone: true}" autocomplete="off">
+
+                                        <small *ngIf="Title.touched && !Title.errors?.required" class="text-success">
+                                  <small>Title Set</small>
+                                        </small>
+                                        <small *ngIf="Title.touched && Title.errors?.required" class="text-danger">
+                                  <small>Please Enter Package Title</small>
+                                        </small>
+                                        <small *ngIf="Title.untouched" class="text-muted">
+                                  <small>Please Enter Package Title</small>
+                                        </small>
+                                    </div>
+
+
+
+
+
+
+
+                                </div>
+
+                                <div class="row mb-3">
+
+
+
+                                    <div class="col-md-6 col-12">
+                                        <!-- <label for="CategoryId" class="form-label">Select Category</label>
+                                        <select class="form-select w-100" aria-label="CategoryId" id="CategoryId" required name="CategoryId" [(ngModel)]="packageData['CategoryId']" #CategoryId="ngModel" [ngModelOptions]="{standalone: true}">
+                                      <option [selected]="true" value="0">Select Category</option>
+                                      <option *ngFor="let category of categories" value="{{category.CategoryId}}">{{category.CategoryName}}</option>
+                                  </select> -->
+
+                                        <div class="fliterNode ">
+                                            <h4> Select Package Category </h4>
+
+                                            <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" color="primary" class="nodeSingle">
+                                                <!-- This is the tree node template for leaf nodes -->
+                                                <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle [hidden]="categoryId==node.CategoryId">
+
+                                                    <!-- <pre>{{node |json}}</pre> -->
+                                                    <li class="mat-tree-node">
+
+
+                                                        <mat-checkbox class="example-margin" [disabled]="node.parent_id==null" (change)="changeParent(node.CategoryId,selectedParentStatus[node.CategoryId]);" [checked]="selectedParent===node.CategoryId" [(ngModel)]="selectedParentStatus[node.CategoryId]" [ngModelOptions]="{standalone: true}">
+                                                            {{node.CategoryName }}
+                                                        </mat-checkbox>
+                                                    </li>
+                                                </mat-tree-node>
+                                                <!-- This is the tree node template for expandable nodes -->
+                                                <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild " [hidden]="categoryId==node.CategoryId">
+
+                                                    <li>
+                                                        <div class="mat-tree-node noderow ">
+                                                            <mat-checkbox class="example-margin" [disabled]="node.parent_id==null" (change)="changeParent(node.CategoryId,selectedParentStatus[node.CategoryId]);" [checked]="selectedParent===node.CategoryId" [(ngModel)]="selectedParentStatus[node.CategoryId]" [ngModelOptions]="{standalone: true}">
+                                                                {{node.CategoryName }}
+                                                            </mat-checkbox>
+                                                        </div>
+
+                                                        <ul>
+                                                            <ng-container matTreeNodeOutlet></ng-container>
+                                                        </ul>
+                                                    </li>
+                                                </mat-nested-tree-node>
+                                            </mat-tree>
+                                        </div>
+
+
+
+
+                                        <!-- <div class="row ml-1">
+                                            <small *ngIf="CategoryId.touched && !CategoryId.errors?.required" class="text-success">
+                                      <small>Category Selected</small>
+                                            </small>
+                                            <small *ngIf="CategoryId.touched && CategoryId.errors?.required" class="text-danger">
+                                      <small>Select Category</small>
+                                            </small>
+                                            <small *ngIf="CategoryId.untouched" class="text-muted">
+                                      <small>Select Category</small>
+                                            </small>
+                                        </div> -->
+                                    </div>
+                                    <div class="col-md-6 col-12">
+                                        <label for="PackageType" class="form-label">Select Package Type</label>
+
+
+
+
+
+                                        <div class="  border-top border-bottom mb-3">
+                                            <div class="form-check form-check-inline mt-2 mr-2" *ngFor="let item of packageType">
+                                                <!-- (change)="checkboxAction($event,'IsActive')" -->
+                                                <input name="category-keys" id="{{item.id}}-package" class="form-check-input" type="checkbox" value="{{item.id}}" [checked]="item.isSelected" (click)="checkboxAction($event,item)">
+                                                <label class="form-check-label" for="{{item.id}}-package"> {{item.label}}</label>
+                                            </div>
+
+                                        </div>
+
+
+                                    </div>
+
+
+                                </div>
+
+
+
+
+                                <div class="mb-3">
+                                    <label for="ShortDescription" class="form-label">Package Short Description</label>
+                                    <textarea class="form-control" id="ShortDescription" rows="3" name="ShortDescription" required [(ngModel)]="packageData['ShortDescription']" #ShortDescription="ngModel" [ngModelOptions]="{standalone: true}"></textarea>
+
+                                    <small *ngIf="ShortDescription.touched && !ShortDescription.errors?.required" class="text-success">
+                                <small>Short Description Set</small>
+                                    </small>
+                                    <small *ngIf="ShortDescription.touched && ShortDescription.errors?.required" class="text-danger">
+                                <small>Please Enter Short Description</small>
+                                    </small>
+                                    <small *ngIf="ShortDescription.untouched" class="text-muted">
+                                <small>Please Enter Short Description</small>
+                                    </small>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="Description" class="form-label">Package Long Description</label>
+                                    <textarea class="form-control" id="Description" rows="3" name="Description" required [(ngModel)]="packageData['Description']" #Description="ngModel" [ngModelOptions]="{standalone: true}"></textarea>
+
+
+                                    <small *ngIf="Description.touched && !Description.errors?.required" class="text-success">
+                                  <small>Short Description Set</small>
+                                    </small>
+                                    <small *ngIf="Description.touched && Description.errors?.required" class="text-danger">
+                                  <small>Please Enter Description</small>
+                                    </small>
+                                    <small *ngIf="Description.untouched" class="text-muted">
+                                  <small>Please Enter Description</small>
+                                    </small>
+                                </div>
+
+                                <div class="row mb-3">
+
+
+                                    <div class="col-md-6 col-12">
+
+                                        <label for="NumberOfPerson" class="form-label">No Of Persions</label>
+                                        <input type="text" class="form-control form-control-lg" id="NumberOfPerson" required name="NumberOfPerson" [(ngModel)]="packageData['NumberOfPerson']" #NumberOfPerson="ngModel" [ngModelOptions]="{standalone: true}" autocomplete="off">
+
+                                        <small *ngIf="NumberOfPerson.touched && !NumberOfPerson.errors?.required" class="text-success">
+                                <small>NumberOfPerson Set</small>
+                                        </small>
+                                        <small *ngIf="Title.touched && Title.errors?.required" class="text-danger">
+                                <small>Please Enter Package Number Of Person</small>
+                                        </small>
+                                        <small *ngIf="Title.untouched" class="text-muted">
+                                <small>Please Enter Package Number Of Person</small>
+                                        </small>
+
+                                    </div>
+
+
+
+                                    <div class="col-md-6 col-12">
+                                        <label for="packagePrice" class="form-label">Package Price</label>
+                                        <input type="number" class="form-control" id="packagePrice" name="Price" [(ngModel)]="packageData['Price']" #Price="ngModel" [ngModelOptions]="{standalone: true}" autocomplete="off" min="0">
+
+                                        <small *ngIf="Price.touched && !Price.errors?.required" class="text-success">
+                                          <small>Price Selected</small>
+                                        </small>
+                                        <small *ngIf="Price.touched && Price.errors?.required" class="text-danger">
+                                          <small>Please Enter Price</small>
+                                        </small>
+                                        <small *ngIf="Price.untouched" class="text-muted">
+                                          <small>Please Select Price</small>
+                                        </small>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <div class="col-md-6 col-12">
+                                        <label for="number-of-days" class="form-label">Number Of Days</label>
+                                        <input type="number" class="form-control" id="number-of-days" name="NoOfDays" [(ngModel)]="packageData['NoOfDays']" #NoOfDays="ngModel" [ngModelOptions]="{standalone: true}" autocomplete="off" min="0">
+
+                                        <small *ngIf="NoOfDays.touched && !NoOfDays.errors?.required" class="text-success">
+                                    <small>Valid Number of Days</small>
+                                        </small>
+                                        <small *ngIf="NoOfDays.touched && NoOfDays.errors?.required" class="text-danger">
+                                    <small>Invalid Number of Days</small>
+                                        </small>
+                                        <small *ngIf="NoOfDays.untouched" class="text-muted">
+                                    <small>Number of Days</small>
+                                        </small>
+                                    </div>
+
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="StartDate" class="form-label">Start Date</label>
+                                            <input name="StartDate" id="StartDate" type="date" class="form-control" value="dd-mm-yyyy" required name="StartDate" [(ngModel)]="packageData['StartDate']" #StartDate="ngModel" [ngModelOptions]="{standalone: true}">
+                                        </div>
+
+                                        <small *ngIf="StartDate.touched && !StartDate.errors?.required" class="text-success">
+                                          <small>Start Date Set</small>
+                                        </small>
+                                        <small *ngIf="StartDate.touched && StartDate.errors?.required" class="text-danger">
+                                          <small>Invalid Start Date</small>
+                                        </small>
+                                        <small *ngIf="StartDate.untouched" class="text-muted">
+                                          <small>Set Start Date</small>
+                                        </small>
+                                    </div>
+
+
+                                </div>
+
+
+                                <div class="row mb-3">
+                                    <div class="col-md-12 col-12">
+                                        <label for="Programs" class="form-label ">Programs</label> <span class="ml-3 btn btn-sm btn-info" (click)="addMore('program');"> Add More</span>
+
+                                        <div *ngFor="let program of packageData.Programs;let i=index;" class="mt-2">
+                                            <fieldset class="border p-2">
+                                                <label for="{{program.day}}" class="form-label"><strong>Day({{i+1}})</strong></label>
+                                                <span class="btn btn-close btn-danger btn-sm float-right" (click)="remove('program',i);"><i class="fas fa-times"></i></span>
+                                                <div class="row mt-3">
+
+                                                    <label for="{{program.Title}}" class="col-sm-4 control-label">Title</label>
+                                                    <div class="col-sm-8">
+                                                        <input type="text" class="form-control" [(ngModel)]="program.Title" [ngModelOptions]="{standalone: true}">
+
+                                                    </div>
+
+
+                                                </div>
+                                                <div class="row mt-2">
+
+                                                    <label for="{{program.Description}}" class="col-sm-4 control-label">Description</label>
+                                                    <div class="col-sm-8">
+
+                                                        <textarea class="form-control" rows="3" [(ngModel)]="program.Description" [ngModelOptions]="{standalone: true}"></textarea>
+
+                                                    </div>
+
+
+                                                </div>
+                                            </fieldset>
+
+
+
+                                        </div>
+
+                                        <label for="Programs" class="form-label mt-3">Additional Note:</label>
+
+                                        <input type="text" class="form-control" [(ngModel)]="packageData.Note" [ngModelOptions]="{standalone: true}">
+
+
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <div class="col-md-6 col-12">
+                                        <label for="Inclusions" class="form-label ">Inclusions</label> <span class="ml-3 btn btn-sm btn-info" (click)="addMore('Inclusions');"> Add More</span>
+
+                                        <div *ngFor="let item of packageData.Inclusions;let i=index;" class="mt-2">
+                                            <fieldset class=" p-2">
+
+                                                <div class="row">
+
+
+                                                    <div class="col-sm-12 input-group">
+                                                        <input type="text" class="form-control" [(ngModel)]="item.text" [ngModelOptions]="{standalone: true}">
+
+                                                        <div class="input-group-append">
+                                                            <span class="btn btn-close btn-danger btn-sm " (click)="remove('Inclusions',i);"><i class="fas fa-times mt-2"></i></span>
+                                                        </div>
+
+
+                                                    </div>
+
+
+
+                                                </div>
+
+                                            </fieldset>
+
+
+
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-6 col-12">
+                                        <label for="Exclusions" class="form-label ">Exclusions</label> <span class="ml-3 btn btn-sm btn-info" (click)="addMore('Exclusions');"> Add More</span>
+
+                                        <div *ngFor="let item of packageData.Exclusions;let i=index;" class="mt-2">
+                                            <fieldset class=" p-2">
+
+                                                <div class="row">
+
+
+                                                    <div class="col-sm-12 input-group">
+                                                        <input type="text" class="form-control" [(ngModel)]="item.text" [ngModelOptions]="{standalone: true}">
+
+                                                        <div class="input-group-append">
+                                                            <span class="btn btn-close btn-danger btn-sm " (click)="remove('Exclusions',i);"><i class="fas fa-times mt-2"></i></span>
+                                                        </div>
+
+
+                                                    </div>
+
+
+
+                                                </div>
+
+                                            </fieldset>
+
+
+
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="row">
+
+                                    <div class="col-md-12 col-12">
+                                        <label for="Terms" class="form-label ">Terms & Conditions</label> <span class="ml-3 btn btn-sm btn-info" (click)="addMore('Terms');"> Add More</span>
+
+                                        <div *ngFor="let item of packageData.Terms;let i=index;" class="mt-2">
+                                            <fieldset class=" p-2">
+
+                                                <div class="row">
+
+
+                                                    <div class="col-sm-12 input-group">
+                                                        <input type="text" class="form-control" [(ngModel)]="item.text" [ngModelOptions]="{standalone: true}">
+
+                                                        <div class="input-group-append">
+                                                            <span class="btn btn-close btn-danger btn-sm " (click)="remove('Terms',i);"><i class="fas fa-times mt-2"></i></span>
+                                                        </div>
+
+
+                                                    </div>
+
+
+
+                                                </div>
+
+                                            </fieldset>
+
+
+
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+                                <div class="row mb-3">
+                                    <div class="col-md-12 col-12">
+                                        <label for="Cancellation" class="form-label ">Cancellation</label> <span class="ml-3 btn btn-sm btn-info" (click)="addMore('Cancellation');"> Add More</span>
+
+                                        <div *ngFor="let item of packageData.Cancellation;let i=index;" class="mt-2">
+                                            <fieldset class="border p-2">
+                                                <label for="{{item.day}}" class="form-label"><strong>Cancellation({{i+1}})</strong></label>
+                                                <span class="btn btn-close btn-danger btn-sm float-right" (click)="remove('Cancellation',i);"><i class="fas fa-times"></i></span>
+                                                <div class="row mt-3">
+
+                                                    <label for="{{item.Days}}" class="col-sm-4 control-label">Days</label>
+                                                    <div class="col-sm-8">
+                                                        <input type="text" class="form-control" [(ngModel)]="item.Days" [ngModelOptions]="{standalone: true}">
+
+                                                    </div>
+
+
+                                                </div>
+
+                                                <div class="row mt-2">
+
+                                                    <label for="{{item.Charges}}" class="col-sm-4 control-label">Charges</label>
+                                                    <div class="col-sm-8">
+
+                                                        <textarea class="form-control" rows="3" [(ngModel)]="item.Charges" [ngModelOptions]="{standalone: true}"></textarea>
+
+                                                    </div>
+
+
+                                                </div>
+                                                <div class="row mt-2">
+
+                                                    <label for="{{item.AppliedOn}}" class="col-sm-4 control-label">Applied On</label>
+                                                    <div class="col-sm-8">
+
+                                                        <textarea class="form-control" rows="3" [(ngModel)]="item.AppliedOn" [ngModelOptions]="{standalone: true}"></textarea>
+
+                                                    </div>
+
+
+                                                </div>
+                                            </fieldset>
+
+
+
+                                        </div>
+
+
+                                    </div>
+                                </div>
+
+
+
+
+                                <div class="row mb-3">
+                                    <div class="col-md-6 col-12">
+                                        <div class=" mb-3">
+                                            <div class="form-check form-check-inline">
+                                                <!-- (change)="checkboxAction($event,'IsActive')" -->
+                                                <input name="category-keys" class="form-check-input" for="key-active-" type="checkbox" [(ngModel)]="packageData['IsActive']" [ngModelOptions]="{standalone: true}">
+                                                <label class="form-check-label" for="key-active-"> Is Active?</label>
+                                            </div>
+
+                                            <div class="form-check form-check-inline">
+                                                <!-- (change)="checkboxAction($event,'IsActive')" -->
+                                                <input name="category-keys" class="form-check-input" type="checkbox" id="key-menu-" [(ngModel)]="packageData['isMenu']" [ngModelOptions]="{standalone: true}">
+                                                <label class="form-check-label" for="key-menu-"> Is Menu?</label>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div *ngIf="error" class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    {{errorMessage}}
+                                    <span class="btn btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="resetError()">
+                                    <i class="fas fa-times"></i>
+                                  </span>
+                                </div>
+
+
+
+                                <button type="submit" class="btn btn-primary">Update Package</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Sidebar -->
+
+
+            </div>
+        </div>
+    </div>
+</div>

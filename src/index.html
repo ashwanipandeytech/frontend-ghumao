@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Ghumao </title>
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="dns-prefetch" href="https://api.ghumao.in/api/">
+    <link rel="preconnect" href="https://api.ghumao.in/api/">
+</head>
+
+
+
+
+<body class="home mat-typography">
+    <!-- <div id="siteLoader" class="site-loader">
+        <div class="preloader-content">
+            <img src="assets/images/loader1.gif" alt="">
+        </div>
+    </div> -->
+    <div id="page" class="full-page">
+        <app-root></app-root>
+    </div>
+
+
+</body>
+<script>
+    var $ = tjq;
+    $(function() {
+
+
+        // apply the class of active to the current nav link
+        $('.tab li a').on('click', function(e) {
+            e.preventDefault();
+            $('.tab li.active').removeClass('active');
+            $(this).parent('.tab li').addClass('active');
+        });
+
+        $(window).scroll(function() {
+            if ($(window).width() > 990) {
+                if ($(this).scrollTop() > 135) {
+                    $('.tab').addClass('fixed');
+                } else {
+                    $('.tab').removeClass('fixed');
+                }
+            }
+        });
+
+        // get an array of 'href' of each a tag
+
+        var navLink = $('.tab li a');
+        //console.log(navLink);
+        var aArray = [];
+
+        for (var i = 0; i < navLink.length; i++) {
+            //console.log(i);
+            var aChild = navLink[i];
+            var navArray = $(aChild).attr('href');
+            //console.log(navArray);
+            aArray.push(navArray);
+            //console.log(aArray);
+            var selector = aArray.join(" , ");
+            //console.log(selector);
+        }
+
+        $(window).scroll(function() {
+            var scrollTop = $(window).scrollTop();
+            var tops = [];
+
+            $(selector).each(function() {
+                var top = $(this).position().top - 60;
+                if (scrollTop > top) {
+                    var id = $(this).attr('id');
+                    $('.tab li').removeClass('active');
+                    $('a[href="#' + id + '"]').parent().addClass('active');
+                }
+                tops.push(top);
+            });
+
+        });
+    });
+</script>
+
+</html>

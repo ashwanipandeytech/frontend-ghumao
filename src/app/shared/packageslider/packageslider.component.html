@@ -1,0 +1,62 @@
+<ngx-slick-carousel class="row package-slider carousel" #slickModal="slick-carousel" [config]="sliderconfig" (init)="slickInit($event)" (breakpoint)="breakpoint($event)">
+
+    <div ngxSlickItem class="col-lg-4 col-md-6 col-sm-4 slide " *ngFor="let item of packageData;let index=index; let odd=odd">
+        <div class="package-wrap ">
+            <figure class="feature-image ">
+                <a href="package/{{item['PackageSlug']}}">
+                    <img src="{{item.src}} " alt=" ">
+                </a>
+            </figure>
+            <!-- <div class="package-price ">
+              <h6>
+                  <span>$1,900 </span> / per person
+              </h6>
+          </div> -->
+            <div class="package-content-wrap ">
+                <div class="package-meta text-center ">
+                    <ul>
+                        <li *ngIf="item.NoOfDays!=''">
+                            <i class="far fa-clock"></i> {{item.NoOfDays-1}}N/{{item.NoOfDays}}D
+                        </li>
+                        <!-- <li *ngIf="item.Code!=''">
+                            <i class="fas fa-user-friends"></i> {{item.Code}}
+                        </li> -->
+                        <li *ngIf="item.PackageName!=''">
+                            <i class="fas fa-map-marked-alt"></i> {{item.PackageName}}
+                        </li>
+                    </ul>
+                </div>
+                <div class="package-content ">
+                    <h3>
+                        <a href="category/{{item['categorySlug']}}">{{item.PackageName}}</a>
+                    </h3>
+                    <div class="review-area ">
+                        <span class="review-text ">({{item.reviewCount}} reviews)</span>
+                        <div class="rating-start " title="Rated 5 out of 5 ">
+
+
+                            <span style="width: 80% " *ngIf="!item.stars"></span>
+                            <span style="width: 100% " *ngIf="item.stars"></span>
+                        </div>
+                    </div>
+
+
+                    <div class="innercontent ">
+                        <p *ngIf="item.ShortDescription">{{item.ShortDescription}}</p>
+                    </div>
+                    <div class="btn-wrap">
+                        <a (click)="utilityservice.scrollToComponent('inquiryformsection')" class="button-text width-6 cursor-pointer">Enquire Now<i class="fas fa-arrow-right "></i></a>
+                        <a href="category/{{item['categorySlug']}}" class="button-text width-6 ">Know More </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--  -->
+
+
+
+
+
+
+</ngx-slick-carousel>

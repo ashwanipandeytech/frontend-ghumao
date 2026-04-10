@@ -1,0 +1,107 @@
+<div class="sidebar-container">
+    <app-sidenav></app-sidenav>
+        
+    <div class="right-content min-vh-100">
+        <div class="container-fluid">
+            <app-page-title [title]="'Add Enquiry'" [icon]="'fa-arrow-alt-circle-left'" [button]="'Return Back To All Enquiry'" [url]="'/admin/enquiry'"></app-page-title>
+
+            <div class="row pb-5">
+
+                <div class="col-md-12 col-12 mb-3">
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <form [formGroup]="formGroup" (ngSubmit)="enquirySubmitAction()">
+                                <!-- Error Alert -->
+                                <div *ngIf="error" class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    {{ errorMessage }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="resetError()"></button>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <div class="col-md-12 col-12">
+                                        <input type="text" class="form-control" id="Source" formControlName="Source" placeholder="Enquiry Source">
+                                        <small *ngIf="formGroup.controls['Source'].invalid && (formGroup.controls['Source'].dirty || formGroup.controls['Source'].touched)" class="text-danger">
+                                            <small>Please Enter Enquiry Source</small>
+                                        </small>
+                                        <small *ngIf="formGroup.controls['Source'].valid || formGroup.controls['Source'].untouched" class="text-muted">
+                                            <small>Please Enter Enquiry Source</small>
+                                        </small>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <div class="col-md-4 col-12">
+                                        <input type="text" class="form-control" id="PersonName" formControlName="PersonName" placeholder="Your Full Name">
+                                        <small *ngIf="formGroup.controls['PersonName'].invalid && (formGroup.controls['PersonName'].dirty || formGroup.controls['PersonName'].touched)" class="text-danger">
+                                            <small>Please Enter Name Correctly</small>
+                                        </small>
+                                        <small *ngIf="formGroup.controls['PersonName'].valid || formGroup.controls['PersonName'].untouched" class="text-muted">
+                                            <small>Please Enter Full Name</small>
+                                        </small>
+                                    </div>
+
+                                    <div class="col-md-4 col-12">
+                                        <input type="email" class="form-control" id="EmailId" formControlName="EmailId" placeholder="Your Email">
+                                        <small *ngIf="formGroup.controls['EmailId'].invalid && (formGroup.controls['EmailId'].dirty || formGroup.controls['EmailId'].touched)" class="text-danger">
+                                            <small>Please Enter Email Correctly</small>
+                                        </small>
+                                        <small *ngIf="formGroup.controls['EmailId'].valid || formGroup.controls['EmailId'].untouched" class="text-muted">
+                                            <small>Please Enter Email</small>
+                                        </small>
+                                    </div>
+
+                                    <div class="col-md-4 col-12">
+                                        <input type="MobileNo" class="form-control" id="MobileNo" formControlName="MobileNo" placeholder="Your Mobile">
+                                        <small *ngIf="formGroup.controls['MobileNo'].invalid && (formGroup.controls['MobileNo'].dirty || formGroup.controls['MobileNo'].touched)" class="text-danger">
+                                            <small>Please Enter Mobile Number Correctly</small>
+                                        </small>
+                                        <small *ngIf="formGroup.controls['MobileNo'].valid || formGroup.controls['MobileNo'].untouched" class="text-muted">
+                                            <small>Please Enter Mobile Number</small>
+                                        </small>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+
+                                    <div class="col-md-4 col-12">
+                                        <input type="text" class="form-control" id="Departure" formControlName="Departure" placeholder="Departure Location">
+                                        <small *ngIf="formGroup.controls['Departure'].invalid && (formGroup.controls['Departure'].dirty || formGroup.controls['Departure'].touched)" class="text-danger">
+                                            <small>Please Enter Valid Departure Location</small>
+                                        </small>
+                                        <small *ngIf="formGroup.controls['Departure'].valid || formGroup.controls['Departure'].untouched" class="text-muted">
+                                            <small>Please Enter Departure Location</small>
+                                        </small>
+                                    </div>
+
+                                    <div class="col-md-4 col-12">
+                                        <input type="text" class="form-control" id="Destination" formControlName="Destination" placeholder="Enter Destination">
+                                        <small *ngIf="formGroup.controls['Destination'].invalid && (formGroup.controls['Destination'].dirty || formGroup.controls['Destination'].touched)" class="text-danger">
+                                            <small>Please Enter Valid Destination</small>
+                                        </small>
+                                        <small *ngIf="formGroup.controls['Destination'].valid || formGroup.controls['Destination'].untouched" class="text-muted">
+                                            <small>Please Enter Destination</small>
+                                        </small>
+                                    </div>
+
+                                    <div class="col-md-4 col-12">
+                                        <input type="number" class="form-control" id="Noper" formControlName="Noper" placeholder="No. Of Persons">
+                                        <small *ngIf="formGroup.controls['Noper'].invalid && (formGroup.controls['Noper'].dirty || formGroup.controls['Noper'].touched)" class="text-danger">
+                                            <small>Please Enter Number Of Persons</small>
+                                        </small>
+                                        <small *ngIf="formGroup.controls['Noper'].valid || formGroup.controls['Noper'].untouched" class="text-muted">
+                                            <small>Please Enter Valid Number</small>
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <textarea class="form-control" id="Message" rows="3" formControlName="Message" placeholder="Your Message"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Add Enquiry</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,9 @@
+<app-header *ngIf="allowaccess">
+
+</app-header>
+<main id="content" class="site-main">
+
+    <router-outlet></router-outlet>
+</main>
+
+<app-footer *ngIf="allowaccess"></app-footer>

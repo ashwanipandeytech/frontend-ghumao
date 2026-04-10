@@ -1,0 +1,140 @@
+<div class="sidebar-container">
+    <app-sidenav></app-sidenav>
+        
+    <div class="right-content min-vh-100">
+        <div class="container-fluid">
+            <app-page-title [title]="'Add Itinerary'" [icon]="'fa-arrow-alt-circle-left'" [button]="'Return Back To All Itineraries'" [url]="'/admin/itinerary/' + packageID + '/manage'"></app-page-title>
+
+
+            <div class="row pb-5">
+
+                <div class="col-md-8 col-12 mb-3">
+                    <form class="gateway-form" [formGroup]="addItineraryForm" (ngSubmit)="addItineraryAction()">
+                        <div class="card shadow">
+
+                            <div class="card-body">
+                                <!-- Error Alert -->
+                                <div *ngIf="error" class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    {{ errorMessage }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="resetError()"></button>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <div class="col-md-6 col-12">
+                                        <label for="Day" class="form-label">Day</label>
+                                        <input type="number" class="form-control" id="Day" formControlName="Day" autocomplete="off" min="0">
+                                        
+                                        <small *ngIf="addItineraryForm.controls['Day'].valid && addItineraryForm.controls['Day'].touched" class="text-success">
+                                            <small>Day Entered</small>
+                                        </small>
+                                        <small *ngIf="addItineraryForm.controls['Day'].invalid && addItineraryForm.controls['Day'].touched" class="text-danger">
+                                            <small>Please Enter Day</small>
+                                        </small>
+                                        <small *ngIf="addItineraryForm.controls['Day'].untouched" class="text-muted">
+                                            <small>Please Enter Day</small>
+                                        </small>
+                                    </div>
+
+                                    <div class="col-md-6 col-12">
+                                        <label for="Cities" class="form-label">Cities</label>
+                                        <input type="text" class="form-control" id="Cities" formControlName="Cities" autocomplete="off">
+
+                                        <small *ngIf="addItineraryForm.controls['Cities'].valid && addItineraryForm.controls['Cities'].touched" class="text-success">
+                                            <small>Cities Set</small>
+                                        </small>
+                                        <small *ngIf="addItineraryForm.controls['Cities'].invalid && addItineraryForm.controls['Cities'].touched" class="text-danger">
+                                            <small>Please Enter Cities Correctly</small>
+                                        </small>
+                                        <small *ngIf="addItineraryForm.controls['Cities'].untouched" class="text-muted">
+                                            <small>Please Enter Cities</small>
+                                        </small>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="Distance" class="form-label">Distance</label>
+                                    <input type="text" class="form-control" id="Distance" formControlName="Distance" autocomplete="off">
+
+                                    <small *ngIf="addItineraryForm.controls['Distance'].valid && addItineraryForm.controls['Distance'].touched" class="text-success">
+                                        <small>Distance Set</small>
+                                    </small>
+                                    <small *ngIf="addItineraryForm.controls['Distance'].invalid && addItineraryForm.controls['Distance'].touched" class="text-danger">
+                                        <small>Please Enter Distance</small>
+                                    </small>
+                                    <small *ngIf="addItineraryForm.controls['Distance'].untouched" class="text-muted">
+                                        <small>Please Enter Distance</small>
+                                    </small>
+                                </div>
+
+
+                                <div class="mb-3">
+                                    <label for="Description" class="form-label">Itinerary Description</label>
+                                    <textarea class="form-control" id="Description" rows="3" formControlName="Description"></textarea>
+                                </div>
+
+                            </div>
+
+                            <div class="card-body">
+        
+                                <button type="submit" class="btn btn-primary">Add Itinerary</button>
+                            
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Right Sidebar -->
+                <div class="col-md-4 col-12 mb-3">
+                    <div class="card shadow mb-3">
+                        <div class="card-body">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="enableUpload" checked
+                                (change)="enableDisableImageUploadAction();">
+                                <label class="form-check-label" for="enableUpload">Upload Image</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card shadow mb-3" id="uploadImageCard">
+                        <img class="card-img-top" id="blah" [src]="imageSrc || 'http://placehold.it/1920x1080'" alt="your image" />
+                        <div class="card-body">
+                            <form [formGroup]="imageUploadForm" (ngSubmit)="imageUpload()">
+                                <label for="Image" class="form-label">Package Image</label>
+                                <input class="form-control" type="file" id="Image" formControlName="Image" (change)="onFileChange($event)">
+                                
+                                <small *ngIf="imageUploadForm.controls['Image'].valid && imageUploadForm.controls['Image'].touched" class="text-success">
+                                    <small>Image URL Entered</small>
+                                </small>
+                                <small *ngIf="imageUploadForm.controls['Image'].invalid && imageUploadForm.controls['Image'].touched" class="text-danger">
+                                    <small>Please Enter Image URL</small>
+                                </small>
+                                <small *ngIf="imageUploadForm.controls['Image'].untouched" class="text-muted">
+                                    <small>Please Select Image URL</small>
+                                </small>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="card shadow mb-3" id="uploadUrlCard" style="display: none;">
+                        <div class="card-body">
+                            <form [formGroup]="imageUploadForm">
+                                <label for="Image" class="form-label">Package Image</label>
+                                <input class="form-control" type="text" id="ImageUrl" formControlName="Image">
+                                
+                                <small *ngIf="imageUploadForm.controls['Image'].valid && imageUploadForm.controls['Image'].touched" class="text-success">
+                                    <small>Image Selected</small>
+                                </small>
+                                <small *ngIf="imageUploadForm.controls['Image'].invalid && imageUploadForm.controls['Image'].touched" class="text-danger">
+                                    <small>Please Enter Image</small>
+                                </small>
+                                <small *ngIf="imageUploadForm.controls['Image'].untouched" class="text-muted">
+                                    <small>Please Select Image</small>
+                                </small>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

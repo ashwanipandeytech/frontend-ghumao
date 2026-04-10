@@ -1,0 +1,29 @@
+.itinerary-table{
+    padding: 1px;
+    box-shadow: 0 0 0 1px #333333 inset;
+
+    td{
+        position: relative;
+        padding: 5px 20px;
+        margin: 0;
+    }
+    td:first-child{
+        border-radius: 4px 0 0 4px;
+        background: #333;
+        color: #fff;
+    }
+    td:last-child{
+        color: #333;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .itinerary-media{
+        max-width: 280px;
+        margin: 0 auto;
+    }
+
+    .itinerary-table{
+        width: 100%;
+    }
+}

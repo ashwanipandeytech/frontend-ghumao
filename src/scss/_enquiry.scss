@@ -1,0 +1,72 @@
+@media screen and (max-width: 480px) {
+  .form-base{
+    position: fixed!important;
+    overflow: scroll;
+    height: 100%;
+    width: 100% !important;
+    top: 0 !important;
+    right:auto !important;
+    bottom:auto !important;
+  }
+}
+
+.floating-enquiry{
+    pointer-events: none;
+    .enquiry-cta{
+        pointer-events: all;
+        position: fixed;
+        bottom: 95px;
+        right: 0;
+        z-index: 9999999;
+
+        button{
+            width: 120px;
+            margin-right: -5px;
+            transition: all 0.3s linear;
+        }
+
+        &:hover, &:active, &:focus{
+            button{
+                margin-right: 30px;
+            }
+
+            transition: all 0.3s linear;
+        }
+    }
+
+    .form-base{
+      position: fixed;
+      width: 320px;
+      right: 15px;
+      top:auto;
+      bottom: 80px;
+      border-radius: 4px;
+      opacity: 0;
+      transform: translateY(-50px);
+      transition: all .3s linear;
+      z-index: 9999998;
+
+        >div{
+            max-width: 100%;
+        }
+    }
+}
+
+
+
+.floating-enquiry.active{
+    pointer-events: all;
+    .form-base{
+        opacity: 1;
+        transform: translate(0);
+        transition: all 0.3s linear;
+    }
+
+    .enquiry-cta{
+        button{
+            margin-right: 30px;
+        }
+        
+        transition: all 0.3s linear;
+    }
+}

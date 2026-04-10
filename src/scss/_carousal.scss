@@ -1,0 +1,37 @@
+.category-carousal, .special-category-carousal{
+    .swiper-container{
+        padding: 0 40px 50px 0px;
+        margin-left: -20px;
+    }
+
+    .swiper-navigation{
+        position: absolute;
+        width: 100%;
+        left: 0%;
+        top: 50%;
+        height: 50px;
+        margin-top: -25px;
+        z-index: 99;
+
+        .btn{
+            border: none;
+            outline: none;
+            font-size: 50px;
+            line-height: 50px;
+            padding: 0;
+            border-radius: 100px;
+            color: #005294;
+            background-color: #F8FAFC;
+            box-shadow: 0 0 0 5px #F8FAFC;
+        }
+
+        .swiper-prev{
+            float: left;
+            margin-left: 10px;
+        }
+        .swiper-next{
+            float: right;
+            margin-right: 10px;
+        }
+    }
+}

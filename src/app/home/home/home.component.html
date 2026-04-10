@@ -1,0 +1,799 @@
+<!-- Home slider html start -->
+<section class="home-slider-section">
+    <div class="home-slider">
+        <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig" (init)="slickInit($event)" (breakpoint)="breakpoint($event)" (afterChange)="afterChange($event)" (beforeChange)="beforeChange($event)">
+            <div ngxSlickItem class="home-banner-items slide">
+                <div class="banner-inner-wrap">
+                    <video preload="auto" height="{{bannerHeight}}" oncontextmenu="return false;" controlsList="nodownload" class="hero-image" [muted]="true" autoplay playsinline loop>
+    <source src="../../../assets/videos/bg.mp4" type="video/mp4">
+    </video>
+                </div>
+
+                <!-- <div class="banner-inner-wrap" style="background-image: url(assets/images/slider-banner-1.jpg);"></div> -->
+                <div class="banner-content-wrap">
+                    <div class="container">
+                        <div class="banner-content text-center">
+                            <h1 class="banner-title h1font">TRAVELLING AROUND THE WORLD</h1>
+                            <p>Ghumao.in is a leading travel company that specializes in providing tailor made holiday packages to it’s customers.</p>
+                            <a (click)="utilityservice.scrollTo('top-notch')" class="button-primary cursor-pointer">EXPLORE MORE</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="overlay"></div>
+            </div>
+            <div ngxSlickItem class="home-banner-items slide">
+                <div class="banner-inner-wrap" style="background-image: url(assets/images/slider-banner-2.jpg);"></div>
+                <div class="banner-content-wrap">
+                    <div class="container">
+                        <div class="banner-content text-center">
+                            <h1 class="banner-title h1font">EXPERIENCE THE NATURE'S BEAUTY</h1>
+                            <p>Ghumao.in is a leading travel company that specializes in providing tailor made holiday packages to it’s customers.</p>
+                            <a (click)="utilityservice.scrollTo('top-notch')" class="button-primary cursor-pointer">EXPLORE MORE</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="overlay"></div>
+            </div>
+        </ngx-slick-carousel>
+
+
+
+    </div>
+</section>
+<!-- slider html start -->
+<!-- Home search field html start -->
+<div class="trip-search-section shape-search-section" id="inquiryformsection">
+    <div class="slider-shape"></div>
+    <div class="container">
+        <form #inquiryform="ngForm" name="form" (ngSubmit)="inquiryform.form.valid && submitinquiryform(inquiryform)" novalidate>
+            <div class="trip-search-inner white-bg row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="input-group col-md-2">
+                            <label> Name* </label>
+                            <input type="text" name="fullName" #fullName="ngModel" required [(ngModel)]="inquiryData.fullName">
+                            <div class="error-msg" *ngIf="fullName.touched">
+                                <span class="text-danger" *ngIf="fullName.errors?.required">
+                               Name is Required
+                               </span>
+                            </div>
+                        </div>
+                        <div class="input-group col-md-2">
+                            <label> Phone Number* </label>
+                            <input type="text" name="phone" [(ngModel)]="inquiryData.phone" #phone="ngModel" required>
+                            <div class="error-msg" *ngIf="phone.touched">
+                                <span class="text-danger" *ngIf="phone.errors?.required">
+                                  Phone Number is Required
+                                 </span>
+                            </div>
+                        </div>
+                        <div class="input-group col-md-2">
+                            <label> Email Id </label>
+                            <input class="input-date-picker" type="text" name="email" [(ngModel)]="inquiryData.email" #email="ngModel" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$" autocomplete="off">
+                            <div class="error-msg" *ngIf="email.dirty || email.touched">
+                                <span class="text-danger" *ngIf="email.invalid && email.errors.pattern">
+                                  Invalid Email
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="input-group col-md-2">
+                            <label> Destination* </label>
+                            <input type="text" name="destination" required [(ngModel)]="inquiryData.destination" #destination="ngModel">
+
+                            <div class="error-msg" *ngIf="destination.touched">
+                                <span class="text-danger" *ngIf="destination.errors?.required">
+                                Destination is Required
+                             </span>
+                            </div>
+
+                        </div>
+
+                        <div class="input-group col-md-2">
+                            <label> Number Of Travelers</label>
+                            <input type="text" name="noOfTravellers" [(ngModel)]="inquiryData.noOfTravellers" #noOfTravellers="ngModel" autocomplete="off">
+
+                        </div>
+
+                        <div class="input-group col-md-2">
+                            <label> Traveling Month </label>
+                            <i class="fa fa-calendar icon cursor-pointer" (click)="dp.toggle()"></i>
+                            <input class="input-date-picker" [minDate]="minDate" #dp="bsDatepicker" bsDatepicker [bsConfig]="{ showWeekNumbers:false,dateInputFormat: 'DD/MM/YYYY' }" readonly type="text" name="travellingMonth" [(ngModel)]="inquiryData.travellingMonth" #travellingMonth="ngModel"
+                                autocomplete="off">
+                        </div>
+
+
+
+                    </div>
+
+
+                </div>
+                <!-- <div class="col-md-12 mt-2  ">
+                    <div class="text-center">
+                        <div class="input-group1 w-25 text-center align-middle">
+                            <label class="screen-reader-text"> Search </label>
+                            <input type="submit" name="travel-search" value="INQUIRE NOW">
+                        </div>
+                    </div>
+
+                </div> -->
+                <div class="container-fluid">
+                    <div class="row ">
+                        <div class="col-12 text-center">
+                            <div class="input-group1">
+
+                                <input type="submit" class=" w-25 text-center align-middle" name="travel-search" value="ENQUIRE NOW">
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </form>
+    </div>
+</div>
+<!-- search search field html end -->
+<section class="destination-section" id="top-notch">
+    <div class="container">
+        <!-- <div class="section-heading">
+            <div class="row align-items-end">
+                <div class="col-lg-7">
+                    <h5 class="dash-style">POPULAR DESTINATION</h5>
+                    <h2>TOP NOTCH DESTINATION</h2>
+                </div>
+                <div class="col-lg-5">
+                    <div class="section-disc">
+                        With a rich heritage and myriad attractions, the country is among the most popular tourist destinations in the world. From historical cities to natural splendours, come see the best of India.
+
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+        <div class="section-heading text-center">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+                    <h5 class="dash-style">POPULAR DESTINATION</h5>
+                    <h2>TOP NOTCH DESTINATION</h2>
+                    <p> With a rich heritage and myriad attractions, the country is among the most popular tourist destinations in the world. From historical cities to natural splendours, come see the best of India.</p>
+                </div>
+            </div>
+        </div>
+        <div class="destination-inner destination-three-column">
+            <div class="row">
+                <div class="col-lg-7">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <a href="category/kashmir-packages">
+                                <div class="desti-item overlay-desti-item">
+                                    <figure class="desti-image">
+                                        <img src="assets/images/Kashmir.png" alt="">
+                                    </figure>
+                                    <div class="meta-cat bg-meta-cat">
+                                        <a href="category/kashmir-packages">Kashmir</a>
+                                    </div>
+                                    <div class="desti-content">
+                                        <h3>
+                                            <a href="category/kashmir-packages">Kashmir</a>
+                                        </h3>
+                                        <div class="rating-start" title="Rated 5 out of 4">
+                                            <span style="width: 100%"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+
+                        </div>
+                        <div class="col-sm-6">
+
+                            <a href="category/himachal-packages">
+                                <div class="desti-item overlay-desti-item">
+                                    <figure class="desti-image">
+                                        <img src="assets/images/manali.png" alt="">
+                                    </figure>
+                                    <div class="meta-cat bg-meta-cat">
+                                        <a href="category/himachal-packages">Manali</a>
+                                    </div>
+                                    <div class="desti-content">
+                                        <h3>
+                                            <a href="category/himachal-packages">Manali</a>
+                                        </h3>
+                                        <div class="rating-start" title="Rated 5 out of 5">
+                                            <span style="width: 100%"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="row">
+                        <div class="col-md-6 col-xl-12">
+                            <a href="category/Leh-Ladakh">
+                                <div class="desti-item overlay-desti-item">
+                                    <figure class="desti-image">
+                                        <img src="assets/images/Ladakh.png" alt="">
+                                    </figure>
+                                    <div class="meta-cat bg-meta-cat">
+                                        <a href="category/Leh-Ladakh">Ladakh</a>
+                                    </div>
+                                    <div class="desti-content">
+                                        <h3>
+                                            <a href="category/Leh-Ladakh">Ladakh</a>
+                                        </h3>
+                                        <div class="rating-start" title="Rated 5 out of 5">
+                                            <span style="width: 100%"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+
+                        </div>
+                        <div class="col-md-6 col-xl-12">
+                            <a href="category/northeast-package">
+                                <div class="desti-item overlay-desti-item">
+                                    <figure class="desti-image">
+                                        <img src="assets/images/Darjeeling3.png" alt="">
+                                    </figure>
+                                    <div class="meta-cat bg-meta-cat">
+                                        <a href="category/northeast-package">Darjeeling</a>
+                                    </div>
+                                    <div class="desti-content">
+                                        <h3>
+                                            <a href="category/northeast-package">Darjeeling</a>
+                                        </h3>
+                                        <div class="rating-start" title="Rated 5 out of 4">
+                                            <span style="width: 100%"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="btn-wrap1 text-center">
+                <a (click)="utilityservice.scrollTo('popular')" class="button-primary">MORE DESTINATION</a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Home packages section html start -->
+<section class="package-section" id="popular">
+    <div class="container">
+        <div class="section-heading text-center">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+                    <h5 class="dash-style">EXPLORE GREAT PLACES</h5>
+                    <h2>POPULAR PACKAGES</h2>
+                    <p>Book your perfect Dream vacation package from a wide range of customised holiday packages and explore all exciting tourist destinationss.</p>
+                </div>
+            </div>
+        </div>
+        <div class="package-inner">
+
+            <app-packageslider [configType]="'full'" [packageType]="'Popular'"></app-packageslider>
+
+
+
+
+
+        </div>
+    </div>
+</section>
+<!-- packages html end -->
+<!-- Home callback section html start -->
+<section class="package-section themed-tour" id="popular">
+    <div class="container">
+        <div class="section-heading text-center">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+                    <h5 class="dash-style">PLAN YOUR HOLIDAY</h5>
+                    <h2> Themed Tours</h2>
+                    <!-- <p> Themed Tours</p> -->
+                </div>
+            </div>
+        </div>
+        <div class="package-inner">
+
+            <app-packagegroup [configType]="'other'" [packageType]="'Popular'"></app-packagegroup>
+
+
+
+
+
+        </div>
+    </div>
+</section>
+
+
+<!-- callback html end -->
+
+
+
+
+<section class="package-section section-margin">
+    <div class="container">
+        <div class="section-heading text-center">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+                    <h5 class="dash-style">EXPLORE GREAT PLACES</h5>
+                    <h2>HONEYMOON SPECIAL</h2>
+                    <p>Book your perfect Dream vacation package from a wide range of customised holiday packages and explore all exciting tourist destinationss.</p>
+                </div>
+            </div>
+        </div>
+        <div class="package-inner">
+
+            <app-packageslider [configType]="'full'" [packageType]="'Honeymoon'"></app-packageslider>
+
+
+
+
+            <!-- <div class="btn-wrap text-center">
+                <a href="#" class="button-primary">VIEW ALL PACKAGES</a>
+            </div> -->
+        </div>
+    </div>
+</section>
+
+
+
+
+
+<!-- Home special section html start -->
+<section class="special-section section-margin">
+    <div class="container">
+        <div class="section-heading text-center">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+                    <h5 class="dash-style">TRAVEL OFFER & DISCOUNT</h5>
+                    <h2>SPECIAL TRAVEL OFFER</h2>
+                    <p>These exclusive tour offers present amazing opportunities to explore the country . Browse through season special holiday deals with a wide range of options for summer, monsoon and winters.</p>
+                </div>
+            </div>
+        </div>
+        <div class="special-inner">
+            <div class="row">
+                <div class="col-md-6 col-lg-4">
+                    <div class="special-item">
+                        <figure class="special-img">
+                            <img src="assets/images/goa-S.png" alt="">
+                        </figure>
+                        <!-- <div class="badge-dis">
+                            <span>
+                          <strong>20%</strong>
+                          off
+                       </span>
+                        </div> -->
+                        <div class="special-content">
+                            <div class="meta-cat">
+                                <a href="category/goa">GOA</a>
+                            </div>
+                            <h3>
+                                <a href="category/goa">A cocktail of tropical influences. </a>
+                            </h3>
+                            <!-- <div class="package-price">
+                                Price:
+                                <del>$1500</del>
+                                <ins>$1200</ins>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="special-item">
+                        <figure class="special-img">
+                            <img src="assets/images/Gujarat-S.png" alt="">
+                        </figure>
+                        <!-- <div class="badge-dis">
+                            <span>
+                          <strong>15%</strong>
+                          off
+                       </span>
+                        </div> -->
+                        <div class="special-content">
+                            <div class="meta-cat">
+                                <a href="category/gujarat-package">GUJARAT</a>
+                            </div>
+                            <h3>
+                                <a href="category/gujarat-package">Explore the best of Gujarat.</a>
+                            </h3>
+                            <!-- <div class="package-price">
+                                Price:
+                                <del>$1300</del>
+                                <ins>$1105</ins>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="special-item">
+                        <figure class="special-img">
+                            <img src="assets/images/Rajasthan-S.png" alt="">
+                        </figure>
+                        <!-- <div class="badge-dis">
+                                <span>
+                          <strong>15%</strong>
+                          off
+                       </span>
+                            </div> -->
+                        <div class="special-content">
+                            <div class="meta-cat">
+                                <a href="category/rajasthan-package">RAJASTHAN</a>
+                            </div>
+                            <h3>
+                                <a href="category/rajasthan-package">Royal, Regal, Revered – Rajasthan.</a>
+                            </h3>
+                            <!-- <div class="package-price">
+                                Price:
+                                <del>$1800</del>
+                                <ins>$1476</ins>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- special html end -->
+<!-- Home special section html start -->
+<section class="best-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5">
+                <div class="section-heading">
+                    <h5 class="dash-style">OUR TOUR GALLERY</h5>
+                    <h2>BEST TRAVELER'S SHARED PHOTOS</h2>
+                    <p>Our happy travelers shared some coolest images they’ve taken while exploring the world, so here are some of the best ones.</p>
+                </div>
+                <figure class="gallery-img">
+                    <img src="assets/images/bl.png" alt="">
+                </figure>
+            </div>
+            <div class="col-lg-7">
+                <div class="row">
+                    <div class="col-sm-6 px-2">
+                        <figure class="gallery-img">
+                            <img src="assets/images/upr1.png" alt="">
+                        </figure>
+                    </div>
+                    <div class="col-sm-6 pl-2">
+                        <figure class="gallery-img">
+                            <img src="assets/images/upr2.png" alt="">
+                        </figure>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 pl-2">
+                        <figure class="gallery-img">
+                            <img src="assets/images/br.png" alt="">
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- Home subscribe section html start -->
+<section class="subscribe-section" style="background-image: url(assets/images/img16.jpg);">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7">
+                <div class="section-heading section-heading-white">
+                    <h5 class="dash-style">Our Special offers for our new users</h5>
+                    <h2>NEW USERS SPECIAL 10% OFF !</h2>
+                    <h4>Sign up now to recieve hot special offers and information about the best tour packages, updates and discounts !!</h4>
+                    <div class="newsletter-form">
+                        <form #newinquiryform="ngForm" name="form" (ngSubmit)="submitinquiryforSignUp(newinquiryform)">
+                            <input type="email" placeholder="Your Email Address" name="email" [(ngModel)]="newuseremail" #newemail="ngModel" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$" autocomplete="off">
+                            <input type="submit" name="signup" value="SIGN UP NOW!">
+                            <div class="error-msg" *ngIf="newemail.dirty || newemail.touched">
+                                <span class="text-danger" *ngIf="email.invalid && newemail.errors.pattern">
+                                Invalid Email
+                              </span>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo. Eaque adipiscing, luctus eleifend temporibus occaecat luctus eleifend tempo ribus.</p> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="callback-section">
+    <div class="container">
+        <div class="row no-gutters align-items-center">
+            <div class="col-lg-5">
+                <!-- <div class="callback-img">
+                  <video oncontextmenu="return false;" width="600" height="1040" controlsList="nodownload" class="hero-image" [muted]="true" autoplay playsinline loop>
+                  <source src="../../../assets/videos/sidevideo.mp4">
+                  </video>
+                  <div class="video-button">
+                      <a id="video-container" data-video-id="IUN664s7N-c">
+                          <i class="fas fa-play"></i>
+                      </a>
+                  </div>
+              </div> -->
+
+
+                <div class="callback-img" style="background-image: url(assets/images/img8.jpg);">
+                    <div class="video-button">
+                        <a id="video-container" data-video-id="IUN664s7N-c">
+                            <i class="fas fa-play"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <div class="callback-inner">
+                    <div class="section-heading section-heading-white">
+                        <h5 class="dash-style">CALLBACK FOR MORE</h5>
+                        <h2>GO TRAVEL. DISCOVER. REMEMBER US!!</h2>
+                        <p>Get amazing deals and offers on customizable packages across top destinations!</p>
+                    </div>
+                    <div class="callback-counter-wrap">
+
+                        <div class="counter-item">
+                            <div class="counter-icon">
+                                <img src="assets/images/icon1.png" alt="">
+                            </div>
+                            <div class="counter-content">
+                                <span class="counter-no">
+                           <span class="counter">1000</span>+
+                                </span>
+                                <span class="counter-text">
+                                    Satisfied customers
+                        </span>
+                            </div>
+                        </div>
+                        <div class="counter-item">
+                            <div class="counter-icon">
+                                <img src="assets/images/icon2.png" alt="">
+                            </div>
+                            <div class="counter-content">
+                                <span class="counter-no">
+                           <span class="counter">250</span>+
+                                </span>
+                                <span class="counter-text">
+                                    Premium Tours
+                        </span>
+                            </div>
+                        </div>
+                        <div class="counter-item">
+                            <div class="counter-icon">
+                                <img src="assets/images/icon3.png" alt="">
+                            </div>
+                            <div class="counter-content">
+                                <span class="counter-no">
+                           <span class="counter">35</span>+
+                                </span>
+                                <span class="counter-text">
+                                    Locations covered
+                        </span>
+                            </div>
+                        </div>
+                        <div class="counter-item">
+                            <div class="counter-icon">
+                                <img src="assets/images/icon4.png" alt="">
+                            </div>
+                            <div class="counter-content">
+                                <span class="counter-no">
+                           <span class="counter">24x7 </span>
+                                </span>
+                                <span class="counter-text">
+                                Support
+                        </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="support-area">
+                        <div class="support-icon">
+                            <img src="assets/images/icon5.png" alt="">
+                        </div>
+                        <div class="support-content">
+                            <h4>Our 24x7 Phone service</h4>
+                            <h3>
+                                <a href="tel:+919818306992">Call: +91-9818306992</a>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- subscribe html end -->
+<!-- Home activity section html start -->
+<!-- <section class="activity-section mt-5">
+    <div class="container">
+        <div class="section-heading text-center">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+                    <h5 class="dash-style">TRAVEL BY ACTIVITY</h5>
+                    <h2>ADVENTURE & ACTIVITY</h2>
+                    <p>Mollit voluptatem perspiciatis convallis elementum corporis quo veritatis aliquid blandit, blandit torquent, odit placeat. Adipiscing repudiandae eius cursus? Nostrum magnis maxime curae placeat.</p>
+                </div>
+            </div>
+        </div>
+        <div class="activity-inner row">
+            <div class="col-lg-2 col-md-4 col-sm-6">
+                <div class="activity-item">
+                    <div class="activity-icon">
+                        <a href="#">
+                            <img src="assets/images/icon6.png" alt="">
+                        </a>
+                    </div>
+                    <div class="activity-content">
+                        <h4>
+                            <a href="#">Family Tour package
+                            </a>
+                        </h4>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6">
+                <div class="activity-item">
+                    <div class="activity-icon">
+                        <a href="#">
+                            <img src="assets/images/icon10.png" alt="">
+                        </a>
+                    </div>
+                    <div class="activity-content">
+                        <h4>
+                            <a href="#">Honeymoon Tour Package
+                            </a>
+                        </h4>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6">
+                <div class="activity-item">
+                    <div class="activity-icon">
+                        <a href="#">
+                            <img src="assets/images/icon9.png" alt="">
+                        </a>
+                    </div>
+                    <div class="activity-content">
+                        <h4>
+                            <a href="#">Adventure Tour Package</a>
+                        </h4>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-2 col-md-4 col-sm-6">
+                <div class="activity-item">
+                    <div class="activity-icon">
+                        <a href="#">
+                            <img src="assets/images/icon7.png" alt="">
+                        </a>
+                    </div>
+                    <div class="activity-content">
+                        <h4>
+                            <a href="#">Pilgrimage Tour Package
+                            </a>
+                        </h4>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6">
+                <div class="activity-item">
+                    <div class="activity-icon">
+                        <a href="#">
+                            <img src="assets/images/icon11.png" alt="">
+                        </a>
+                    </div>
+                    <div class="activity-content">
+                        <h4>
+                            <a href="#">Premium <br> Tours</a>
+                        </h4>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6">
+                <div class="activity-item">
+                    <div class="activity-icon">
+                        <a href="#">
+                            <img src="assets/images/icon11.png" alt="">
+                        </a>
+                    </div>
+                    <div class="activity-content">
+                        <h4>
+                            <a href="#">Experiential Tour
+
+                            </a>
+                        </h4>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> -->
+<!-- activity html end -->
+
+<!-- Home testimonial section html start -->
+<app-testimonial></app-testimonial>
+<!-- testimonial html end -->
+<!-- Home contact details section html start -->
+<section class="contact-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="contact-img" style="background-image: url(assets/images/img24.jpg);">
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="contact-details-wrap">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="contact-details">
+                                <div class="contact-icon">
+                                    <img src="assets/images/icon12.png" alt="">
+                                </div>
+                                <ul>
+                                    <li>
+                                        <a href="mailto:enquiry@ghumao.in"><span class="__cf_email__" >enquiry@ghumao.in</span></a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="contact-details">
+                                <div class="contact-icon">
+                                    <img src="assets/images/icon13.png" alt="">
+                                </div>
+                                <ul>
+                                    <li>
+                                        <a href="tel:+919818306992">+91-9818306992
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="contact-details">
+                                <div class="contact-icon">
+                                    <img src="assets/images/icon14.png" alt="">
+                                </div>
+                                <ul>
+                                    <li>
+                                        34/40,Old Rajinder Nagar,New Delhi-110060
+
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-btn-wrap">
+                    <h3>LET'S JOIN US FOR MORE UPDATE !!</h3>
+                    <a href="#" class="button-primary">LEARN MORE</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--  contact details html end -->

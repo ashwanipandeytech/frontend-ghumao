@@ -1,0 +1,72 @@
+<div class="sidebar-container">
+    <app-sidenav></app-sidenav>
+
+    <div class="right-content min-vh-100">
+        <div class="container-fluid">
+            <app-page-title [title]="'Edit Banner'" [icon]="'fa-arrow-alt-circle-left'" [button]="'Return Back To All Banners'" [url]="'/admin/banners'"></app-page-title>
+
+            <div class="row pb-5">
+
+                <div class="col-md-8 col-12 mb-3">
+                    <form class="gateway-form" [formGroup]="editBannersFrom" (ngSubmit)="editBannerAction()">
+                        <div class="card shadow">
+                            <div class="card-body">
+                                <!-- Error Alert -->
+                                <div *ngIf="error" class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    {{ errorMessage }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="resetError()"></button>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="BannerTitle" class="form-label">Banner Title</label>
+                                    <input type="text" class="form-control form-control-lg" id="BannerTitle" formControlName="BannerTitle" autocomplete="off">
+
+                                    <small *ngIf="editBannersFrom.controls['BannerTitle'].valid && editBannersFrom.controls['BannerTitle'].touched" class="text-success">
+                                        <small>Title Set</small>
+                                    </small>
+                                    <small *ngIf="editBannersFrom.controls['BannerTitle'].invalid && editBannersFrom.controls['BannerTitle'].touched" class="text-danger">
+                                        <small>Please Enter Banner Name</small>
+                                    </small>
+                                    <small *ngIf="editBannersFrom.controls['BannerTitle'].untouched" class="text-muted">
+                                        <small>Please Enter Banner Name</small>
+                                    </small>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <div class="col-md-12 col-12">
+                                        <label for="TitleSlug" class="form-label">Subtitle</label>
+                                        <input type="text" class="form-control" id="TitleSlug" formControlName="TitleSlug" autocomplete="off">
+
+                                        <small *ngIf="editBannersFrom.controls['TitleSlug'].valid && editBannersFrom.controls['TitleSlug'].touched" class="text-success">
+                                            <small>Title Set</small>
+                                        </small>
+                                        <small *ngIf="editBannersFrom.controls['TitleSlug'].invalid && editBannersFrom.controls['TitleSlug'].touched" class="text-danger">
+                                            <small>Please Enter Banner Slug</small>
+                                        </small>
+                                        <small *ngIf="editBannersFrom.controls['TitleSlug'].untouched" class="text-muted">
+                                            <small>Please Enter Banner Slug</small>
+                                        </small>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="card-body">
+                                <button type="submit" class="btn btn-primary">Edit Banner</button>
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Right Sidebar -->
+                <div class="col-md-4 col-12 mb-3">
+                    <div class="card shadow mb-3" id="uploadImageCard">
+                        <img class="card-img-top" id="blah" [src]="imageSrc || 'http://placehold.it/1920x1080'" alt="your image" />
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>

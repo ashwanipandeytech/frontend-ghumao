@@ -1,0 +1,125 @@
+.price-inr-symbol{
+    font-family: 'Mukta', sans-serif;
+}
+
+
+.responsive-image-placeholder{
+    position: relative;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+
+    .ar-placeholder{
+        width: 100%;
+        height: 100%;
+    }
+
+    .responsive{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+
+        >img{
+            width:100%;
+            height:100%;
+            object-fit: cover;
+        }
+    }
+
+    .popular{
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        display: inline-block;
+        font-size: 14px;
+        line-height: 26px;
+        background-color: #FB8B01;
+    }
+}
+
+.blob{
+    max-width: 740px;
+
+    .divider{
+        position: relative;
+        height: 1px;
+
+        >i{
+            position: absolute;
+            font-size: 24px;
+            top: 12px;
+        }
+
+        &:before{
+            content: "";
+            position: absolute;
+            left: 50%;
+            transform: translate(34px, 0);
+            display: block;
+            width: 130px;
+            margin: 0 auto;
+            border-bottom: 1px solid #666;
+        }
+
+        &:after{
+            content: "";
+            position: absolute;
+            right: 50%;
+            transform: translate(-10px, 0);
+            display: block;
+            width: 130px;
+            margin: 0 auto;
+            border-bottom: 1px solid #666;
+        }
+    }
+}
+
+.blob.light{
+    .divider{
+        >i{
+            color: #fff;
+        }
+
+        &:before{
+            color: #fff;
+            border-bottom: 1px solid #fff;
+        }
+
+        &:after{
+            color: #fff;
+            border-bottom: 1px solid #fff;
+        }
+    }
+}
+
+.icon-list{
+    &, li{
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        p{
+            position: relative;
+            margin: 0;
+            height: auto;
+            overflow: auto;
+
+            >i, >span{
+                float: left;
+                line-height: 50px;
+            }
+
+            >i{
+                width: 64px;
+                font-size: 36px;
+                color: #D60D45;
+            }
+        }
+    }
+}
+
+.max-500{
+    max-width: 500px;
+}

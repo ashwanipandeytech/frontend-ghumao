@@ -1,0 +1,89 @@
+.package-card-one {
+    margin-bottom: 20px;
+
+    .deals-item-outer {
+        position: relative;
+        margin: 0;
+        padding: 0;
+        background: #fff;
+        box-shadow: 0px 0px 20px #cccccc67;
+        border-radius: 10px;
+        overflow: hidden;
+        border: 0;
+        outline: 0;
+        z-index: 5;
+
+        .deals-image {
+            position: relative;
+            overflow: hidden;
+
+            img {
+                width: 100%;
+            }
+
+            span.deal-price {
+                position: absolute;
+                width: 100%;
+                height: 40px;
+                left: 0;
+                bottom: 0;
+                line-height: 40px;
+                font-size: 24px;
+                background: linear-gradient(45deg, #d60d45 0%, #046b8c 100%);
+                font-weight: normal;
+                color: #fff;
+                text-align: center;
+                box-shadow: 1px 1px 5px #00000057;
+                z-index: 1;
+            }
+
+            &::after {
+                position: absolute;
+                height: 100%;
+                width: 100%;
+                top: 0;
+                left: 0;
+                background-image: linear-gradient(to bottom right, #ff00001c, #ffff0047);
+                content: '';
+                opacity: 0;
+                transition: all ease-in-out 0.3s;
+            }
+        }
+
+        .deal-rating span {
+            color: #ffc63f;
+            font-size: 24px;
+        }
+
+        .deal-content {
+            background: #fff;
+            text-align: center;
+            padding: 25px 0;
+        }
+    }
+}
+
+.pack-title {
+    margin: 0;
+    font-weight: bold;
+}
+
+.pack-ext {
+    font-size: 11px;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+    text-align:left;
+}
+
+.ex-duration{
+    width: 100%;
+    
+    .pak-duration {
+        font-size: 20px;
+        font-weight: bold;
+        color: #fb8b01;
+        text-align: left;
+    }
+}
+.inc-exc{min-height: 164px; overflow: hidden;}

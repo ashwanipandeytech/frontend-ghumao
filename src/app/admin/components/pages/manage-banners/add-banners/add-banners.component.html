@@ -1,0 +1,108 @@
+
+<div class="sidebar-container">
+    <app-sidenav></app-sidenav>
+        
+    <div class="right-content min-vh-100">
+        <div class="container-fluid">
+            <app-page-title [title]="'Add Banner'" [icon]="'fa-arrow-alt-circle-left'" [button]="'Return Back To All Banners'" [url]="'/admin/banners'"></app-page-title>
+
+            <div class="row pb-5">
+
+                <div class="col-md-8 col-12 mb-3">
+                    <form class="gateway-form" [formGroup]="addBannerFrom" (ngSubmit)="addBannerAction()">
+                        <div class="card shadow">
+                            <div class="card-body">
+                                <!-- Error Alert -->
+                                <div *ngIf="error" class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    {{ errorMessage }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="resetError()"></button>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="BannerTitle" class="form-label">Banner Title</label>
+                                    <input type="text" class="form-control form-control-lg" id="BannerTitle" formControlName="BannerTitle" autocomplete="off">
+
+                                    <small *ngIf="addBannerFrom.controls['BannerTitle'].valid && addBannerFrom.controls['BannerTitle'].touched" class="text-success">
+                                        <small>Title Set</small>
+                                    </small>
+                                    <small *ngIf="addBannerFrom.controls['BannerTitle'].invalid && addBannerFrom.controls['BannerTitle'].touched" class="text-danger">
+                                        <small>Please Enter Banner Title</small>
+                                    </small>
+                                    <small *ngIf="addBannerFrom.controls['BannerTitle'].untouched" class="text-muted">
+                                        <small>Please Enter Banner Title</small>
+                                    </small>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <div class="col-md-12 col-12">
+                                        <label for="TitleSlug" class="form-label">Banner Sub Title</label>
+                                        <input type="text" class="form-control" id="TitleSlug" formControlName="TitleSlug" autocomplete="off">
+
+                                        <small *ngIf="addBannerFrom.controls['TitleSlug'].valid && addBannerFrom.controls['TitleSlug'].touched" class="text-success">
+                                            <small>Title Set</small>
+                                        </small>
+                                        <small *ngIf="addBannerFrom.controls['TitleSlug'].invalid && addBannerFrom.controls['TitleSlug'].touched" class="text-danger">
+                                            <small>Please Enter Banner Subtitle</small>
+                                        </small>
+                                        <small *ngIf="addBannerFrom.controls['TitleSlug'].untouched" class="text-muted">
+                                            <small>Please Enter Banner Subtitle</small>
+                                        </small>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="card-body">
+        
+                                <button type="submit" class="btn btn-primary">Add Banner</button>
+                            
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Right Sidebar -->
+                <div class="col-md-4 col-12 mb-3">
+                    <div class="card shadow mb-3" id="uploadImageCard">
+                        <img class="card-img-top" id="blah" [src]="imageSrc || 'http://placehold.it/1920x820'" alt="your image" />
+                        <div class="card-body">
+                            <form [formGroup]="imageUploadForm" (ngSubmit)="imageUpload()">
+                                <label for="Image" class="form-label">Package Image</label>
+                                <input class="form-control" type="file" id="Image" formControlName="Image" (change)="onFileChange($event)">
+                                
+                                <small *ngIf="imageUploadForm.controls['Image'].valid && imageUploadForm.controls['Image'].touched" class="text-success">
+                                    <small>Image URL Entered</small>
+                                </small>
+                                <small *ngIf="imageUploadForm.controls['Image'].invalid && imageUploadForm.controls['Image'].touched" class="text-danger">
+                                    <small>Please Enter Image URL</small>
+                                </small>
+                                <small *ngIf="imageUploadForm.controls['Image'].untouched" class="text-muted">
+                                    <small>Please Select Image URL</small>
+                                </small>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="card shadow mb-3" id="uploadUrlCard" style="display: none;">
+                        <div class="card-body">
+                            <form [formGroup]="imageUploadForm">
+                                <label for="Image" class="form-label">Banner Image</label>
+                                <input class="form-control" type="text" id="ImageUrl" formControlName="Image">
+                                
+                                <small *ngIf="imageUploadForm.controls['Image'].valid && imageUploadForm.controls['Image'].touched" class="text-success">
+                                    <small>Image Selected</small>
+                                </small>
+                                <small *ngIf="imageUploadForm.controls['Image'].invalid && imageUploadForm.controls['Image'].touched" class="text-danger">
+                                    <small>Please Enter Image</small>
+                                </small>
+                                <small *ngIf="imageUploadForm.controls['Image'].untouched" class="text-muted">
+                                    <small>Please Select Image</small>
+                                </small>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+        </div>
+    </div>
+</div>

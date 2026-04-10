@@ -1,0 +1,38 @@
+.parallax-window-area{
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: -1;
+
+    .the-parallax-image{
+        width: 100%;
+    }
+
+    .the-parallax-bg-image{
+        width: 100%;
+        height: 200%;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        background-size: cover;
+        background-position: center;
+
+        &.simple-parallax-initialized{
+            opacity: 1;
+            transition: opacity 0.3s ease;
+        }
+    }
+
+    .overlay-content{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.3);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
