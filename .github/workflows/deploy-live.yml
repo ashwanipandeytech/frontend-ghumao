@@ -37,3 +37,4 @@ jobs:
           delete: true
           exclude: |
             **/.htaccess
+            api/
