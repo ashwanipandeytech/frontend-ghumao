@@ -22,7 +22,7 @@ jobs:
         run: npm install --legacy-peer-deps
 
       - name: Build Angular App
-        run: npm run build -- --configuration stage
+        run: npm run build -- --configuration stage --base-href https://ghumao.demohandler.in/
 
       - name: Deploy to Hostinger Stage
         uses: SamKirkland/FTP-Deploy-Action@4.3.3
